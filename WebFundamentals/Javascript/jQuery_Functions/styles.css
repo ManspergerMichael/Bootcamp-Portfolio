@@ -1,0 +1,69 @@
+#header{
+    display: inline-block;
+    background-color: gray;
+    align-items: center;
+    padding: 6px;
+    padding-left: 75px;
+    text-align: center;
+    width: 94%;
+}
+#header p{
+    font-size: 22px;
+}
+.leftButton{
+    background:url("/icons/left.png");
+    width:25px;
+    height:25px;
+}
+.rightButton{
+    background:url("/icons/right.png");
+}
+.closeButton{
+    background:url("/icons/close.png");
+}
+.homeButton{
+    background:url("/icons/home.png");
+}
+.jQueryBlock{
+    width : 95%;
+    display: inline-block;
+}
+.jQueryBlock button{
+    width: 60px;
+    height: 30px;
+
+}
+.jQueryBlock p{
+    padding-left: 50%;
+    font-size: 24px;
+}
+.jQueryBlock span{
+    padding-top: 15px;
+}
+#showSpan{
+    display: none;
+}
+#toggleSpan{
+    display: none;
+}
+.slideDiv{
+    background-color: gold;
+    height:50px;
+    width:100px;
+    margin-left: 365px;
+    vertical-align: top;
+    display: none;
+}
+#fadeOutDiv {
+    background-color: gold;
+    display:inherit;
+}
+.red{
+    color: red;
+}
+.JQDiv{
+    display: inline-block; 
+}
+.TextP{
+    font-size:12px;
+}

@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Random Chance</title>
+        <script "use strict";>
+            //calls function and writes result to page
+            document.writeln("Result:"+RandomChance(50, 200));
+           function RandomChance(quarters, winLimit) {
+               //keeps track of player's total winnings
+               var totalWinnings = 0;
+
+               //generates prize for corect roll
+               var prize = Math.trunc(Math.random()*50) + 50;
+               //document.writeln("Prize:"+winnings);
+
+                //generates the winning number
+               var chance = Math.trunc(Math.random()*100) + 1;
+               //document.writeln("Correct guess:"+chance);
+
+               var roll;
+               for(var i = quarters; i > 0; i--){
+                   //generates the player's spin result
+                   roll = Math.trunc(Math.random()*100) + 1;
+                   console.log(roll);
+                   //if players roll matches the chance they win
+                   if(roll == chance){
+                       //if player has not reached the entered win limit
+                       //generate new prize and win number and spin again
+                       if(totalWinnings < winLimit){
+                           document.writeln("A WIN!");
+                           //sets totalWinnings to remaining quarters + prize
+                           totalWinnings = prize + i;
+                           //sets number of tries to totalWinnings
+                           i = totalWinnings;
+                           //reset winnings and chance after winning
+                           prize = Math.trunc(Math.random()*50) + 50;
+                           chance = Math.trunc(Math.random()*100) + 1;
+                           continue;
+                       }
+                       //if player has reached winLimit
+                       else if(totalWinnings >= winLimit) {
+                            document.writeln("Congraturations!");
+                            return totalWinnings
+                       }
+                   }
+               }
+               //if loop runs out and player has no remaining quarters
+               //disply game over message
+               document.writeln("YOU LOSE SIR! GOOD DAY!")
+               return 0;
+           }
+        </script>
+    </head>
+</html>

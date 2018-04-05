@@ -1,0 +1,36 @@
+*{
+    padding:0px;
+    margin: 0px;
+}
+
+.tableDiv{
+    border: 3px solid black;
+    width:600px;
+}
+.table{
+    padding-left:10px;
+    text-align: center;
+
+}
+th{
+    padding-right: 20px;
+}
+td{
+    padding: 5px;
+}
+.form{
+    width:300px;
+    margin-left:65px;
+}
+label{
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+}
+input{
+    margin-left:20px;
+}
+#submitButton{
+    margin-left: 228px;
+    margin-top: 25px;
+}

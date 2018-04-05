@@ -1,0 +1,133 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#header{
+    background-color: gray;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height:30px;
+    
+}
+#name{
+    display: inline;
+    font-size: 32px;
+    
+}
+#stitle{
+    display: inline;
+    padding-left: 50%;
+    font-size: 18px;
+}
+
+#introduction{
+    width:118%;
+   padding-left: 306px;
+}
+
+#container{
+    background-color: rgb(97, 109, 143);
+    padding: 10px;
+}
+#photo{
+    border-color: gray;
+    display: inline-block;
+    vertical-align: top;
+}
+#info{
+    display: inline-block;
+    width: 360px;
+}
+#bio{
+    background-color: white;
+    height: 212px;
+}
+.Title{
+    background-color: gray;
+    color: white;
+    font-size: 18;
+    display: block;
+    padding: 10px;
+}
+
+#LaMode{
+    display: inline-block;
+    margin:5px;
+}
+#LaModeTitle{
+    background-color: silver;
+    color: white;
+    height: 20px;
+}
+#LaModeInfo{
+   background-color: thistle;
+
+}
+
+#FamilyContacts{
+    display: inline-block;
+    margin:5px;
+}
+#FamTitle{
+    background-color: silver;
+    color: white;
+    height: 20px;
+}
+
+#famInfo{
+    background-color: thistle;
+}
+
+#fiveEleven{
+    display: inline-block;
+    margin:5px;
+}
+
+#fiveTitle{
+    background-color: silver;
+    color: white;
+    height: 20px;
+}
+
+#fiveInfo{
+    background-color: thistle;
+}
+
+.techIcons{
+    background-color: silver;
+    
+}
+#icon{
+    display:inline-block;
+}
+.link{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: silver;
+}
+
+#Projects{
+    margin: 0px;
+    padding-left: 300px;
+}
+#Contact{
+padding-left: 35%;
+background-color: slategrey;
+}
+.webLinks{
+    display: inline-block;
+    text-align: center;
+}
+
+button{
+    background-color: seagreen;
+    border-radius: 5px;
+    width:100px;
+    height:25px;
+}
+p{
+    word-wrap: break-word;
+}

@@ -1,0 +1,146 @@
+Last login: Mon Mar 19 14:50:10 on ttys000
+Michaels-MacBook-Pro:~ michaelmansperger$ cd ~
+Michaels-MacBook-Pro:~ michaelmansperger$ ls
+Applications	Documents	Library		Music		Public
+Desktop		Downloads	Movies		Pictures
+Michaels-MacBook-Pro:~ michaelmansperger$ cd desktop
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-ninja-master	academy-pacman-master 2
+Michaels-MacBook-Pro:desktop michaelmansperger$ mkdir test
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-pacman-master 2
+academy-ninja-master	test
+Michaels-MacBook-Pro:desktop michaelmansperger$ cd test
+Michaels-MacBook-Pro:test michaelmansperger$ touch index.html
+Michaels-MacBook-Pro:test michaelmansperger$ touch styles.css
+Michaels-MacBook-Pro:test michaelmansperger$ touch commands.txt
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html	styles.css
+Michaels-MacBook-Pro:test michaelmansperger$ cp index.html index_2.html
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html	index_2.html	styles.css
+Michaels-MacBook-Pro:test michaelmansperger$ rm styles.css
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html	index_2.html
+Michaels-MacBook-Pro:test michaelmansperger$ cd ..
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-pacman-master 2
+academy-ninja-master	test
+Michaels-MacBook-Pro:desktop michaelmansperger$ mkdir destination
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-pacman-master 2	test
+academy-ninja-master	destination
+Michaels-MacBook-Pro:desktop michaelmansperger$ cd test
+Michaels-MacBook-Pro:test michaelmansperger$ mv destination/index_2.html
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Michaels-MacBook-Pro:test michaelmansperger$ mv destination/index_2.html -i
+mv: rename destination/index_2.html to -i: No such file or directory
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html	index_2.html
+Michaels-MacBook-Pro:test michaelmansperger$ mv-i destination/index_2.html
+-bash: mv-i: command not found
+Michaels-MacBook-Pro:test michaelmansperger$ mv index_2.html
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Michaels-MacBook-Pro:test michaelmansperger$ mv -i index_2.html 
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Michaels-MacBook-Pro:test michaelmansperger$ mv ~/desktop/test/index_2.html /test
+mv: rename /Users/michaelmansperger/desktop/test/index_2.html to /test: Permission denied
+Michaels-MacBook-Pro:test michaelmansperger$ mv ~/desktop/test/index_2.html /test -i
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Michaels-MacBook-Pro:test michaelmansperger$ mv ~/desktop/test/index_2.html /test -f
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Michaels-MacBook-Pro:test michaelmansperger$ mv -f  ~/desktop/test/index_2.html /test 
+mv: rename /Users/michaelmansperger/desktop/test/index_2.html to /test: Permission denied
+Michaels-MacBook-Pro:test michaelmansperger$ mv -i  ~/desktop/test/index_2.html /test 
+mv: rename /Users/michaelmansperger/desktop/test/index_2.html to /test: Permission denied
+Michaels-MacBook-Pro:test michaelmansperger$ sudo mv ~/desktop/test/index_2.html /test 
+Password:
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html
+Michaels-MacBook-Pro:test michaelmansperger$ cd..
+-bash: cd..: command not found
+Michaels-MacBook-Pro:test michaelmansperger$ cd ..
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-pacman-master 2	test
+academy-ninja-master	destination
+Michaels-MacBook-Pro:desktop michaelmansperger$ cd destination
+Michaels-MacBook-Pro:destination michaelmansperger$ ls
+Michaels-MacBook-Pro:destination michaelmansperger$ cd test
+-bash: cd: test: No such file or directory
+Michaels-MacBook-Pro:destination michaelmansperger$ touch index_2.html
+Michaels-MacBook-Pro:destination michaelmansperger$ ls
+index_2.html
+Michaels-MacBook-Pro:destination michaelmansperger$ cd destination
+-bash: cd: destination: No such file or directory
+Michaels-MacBook-Pro:destination michaelmansperger$ cd..
+-bash: cd..: command not found
+Michaels-MacBook-Pro:destination michaelmansperger$ cd ..
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-pacman-master 2	test
+academy-ninja-master	destination
+Michaels-MacBook-Pro:desktop michaelmansperger$ cd test
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html
+Michaels-MacBook-Pro:test michaelmansperger$ touch index_2.html
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html	index_2.html
+Michaels-MacBook-Pro:test michaelmansperger$ mv ~/desktop/destination/index_2.html
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Michaels-MacBook-Pro:test michaelmansperger$ mv -f  ~/desktop/destination/index_2.html
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Michaels-MacBook-Pro:test michaelmansperger$ mv  ~/desktop/test/index_2.html ~/desktop/destination/index_2.html
+Michaels-MacBook-Pro:test michaelmansperger$ ls
+commands.txt	index.html
+Michaels-MacBook-Pro:test michaelmansperger$ cd ..
+Michaels-MacBook-Pro:desktop michaelmansperger$ cd destination
+Michaels-MacBook-Pro:destination michaelmansperger$ ls
+index_2.html
+Michaels-MacBook-Pro:destination michaelmansperger$ cd ..
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir -r [destination]
+rmdir: illegal option -- r
+usage: rmdir [-p] directory ...
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-pacman-master 2	test
+academy-ninja-master	destination
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir -r destination
+rmdir: illegal option -- r
+usage: rmdir [-p] directory ...
+Michaels-MacBook-Pro:desktop michaelmansperger$ ls
+Web Fundimentals	academy-pacman-master 2	test
+academy-ninja-master	destination
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir destination
+rmdir: destination: Directory not empty
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir destination -r
+rmdir: destination: Directory not empty
+rmdir: -r: No such file or directory
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir-r destination
+-bash: rmdir-r: command not found
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir -r destination
+rmdir: illegal option -- r
+usage: rmdir [-p] directory ...
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir destination -r
+rmdir: destination: Directory not empty
+rmdir: -r: No such file or directory
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir -r ~/desktop/destination
+rmdir: illegal option -- r
+usage: rmdir [-p] directory ...
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir ~/desktop/destination
+rmdir: /Users/michaelmansperger/desktop/destination: Directory not empty
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir(1)
+-bash: syntax error near unexpected token `1'
+Michaels-MacBook-Pro:desktop michaelmansperger$ rmdir -r ~/desktop/destination
+rmdir: illegal option -- r
+usage: rmdir [-p] directory ...
+Michaels-MacBook-Pro:desktop michaelmansperger$ rm -rf[destination]
+rm: illegal option -- [
+usage: rm [-f | -i] [-dPRrvW] file ...
+       unlink file
+Michaels-MacBook-Pro:desktop michaelmansperger$ rm -rf destination
+Michaels-MacBook-Pro:desktop michaelmansperger$ 

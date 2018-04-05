@@ -1,0 +1,26 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#header{
+    display: inline-block;
+    background-color: gray;
+    align-items: center;
+    padding: 6px;
+    padding-left: 75px;
+    text-align: center;
+    width: 94%;
+}
+img{
+    width:100px;
+    height:100px;
+    padding:5px;
+}
+#imgHolder{
+    width: 455px;
+    height: 250px;
+}
+#restore{
+    width: 100px;
+    height: 50px;
+}

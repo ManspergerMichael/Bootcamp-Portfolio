@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Jquery Functions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('button.clickButton').click(function(){
+                alert("You Clicked a button!");
+            })
+
+            $('button.hideButton').click(function(){
+                $('#hideSpan').hide();
+            })
+
+            $('button.ShowButton').click(function(){
+                $('#showSpan').show();
+            })
+
+            $('button.toggleButton').click(function(){
+                $('#toggleSpan').toggle();
+            })
+
+            $('button.slideDownButton').click(function(){
+                $('#slideDownDiv').slideDown("slow");
+            })
+
+            $('button.slideUpButton').click(function(){
+                $('#slideUpDiv').slideToggle("slow");
+            })
+
+            $('button.slideToggleButton').click(function(){
+                $('#toggleDiv').slideToggle("slow");
+            })
+
+            $('button.fadeInButton').click(function(){
+                $('#fadeInDiv').fadeIn("slow");
+            })
+
+            $('button.fadeOutButton').click(function(){
+                $('#fadeOutDiv').fadeOut("slow");
+            })
+            $('button.addClassButton').click(function(){
+                $('#classSpan').addClass("red");
+            })
+
+            $('button.beforeButton').click(function(){
+                $('#beforeSpan').before("Click this button ");
+            })
+
+            $('button.afterButton').click(function(){
+                $('#afterSpan').after(" to add text after the paragraph.");
+            })
+
+            $('button.appendButton').click(function(){
+                $('#quacktastic').append("<p>Quack!</p>");
+            })
+
+            $('button.htmlButton').click(function(){
+                var htmlString = $("#htmlDiv").html();
+                $("#htmlDiv").text(htmlString);
+            })
+
+            $('button.attrButton').click(function(){
+                var divAttr = $("#attrDiv").attr("class");
+                $("#attrSpan").text(divAttr);
+            })
+
+            $('select.valSelect').change(function(){
+                var valOption = $(".valSelect").val();
+                $("#valSpan").text(valOption);
+            })
+
+            $('button.textButton').click(function(){
+                var txt1 = $('#txtSpan1').text();
+                var txt2 = $('#txtSpan2').text();
+                $('#txtSpan1').text(txt2);
+                $('#txtSpan2').text(txt1);
+
+            })
+            var dataObj ={
+                first : "alac",
+                last : "Baldwain"
+            }
+            $('button.dataButton').click(function(){
+                console.log(dataObj.first, dataObj.last);
+                $('#dataSpan1').text( dataObj.first);
+                $('#dataSpan2').text( dataObj.last);
+            })
+            
+            //$( "span:second" ).text( $( "#dataDiv" ).data( "test" ).last );
+
+
+        });
+    </script>
+    <title>JQuery Functions</title>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <p>My jQuery basic assignment!</p>
+            <button class="leftButton">Back</button>
+            <button class="rightButton">Forward</button>
+            <button class="closebutton">Close</button>
+            <button class="homeButton">Home</button>
+            <input id="BrowserBar" type="text">
+            <input id="searchBox" type="text">
+        </div>
+        <div class="jQueryBlock">
+            <p>Click</p>
+            <button class="clickButton">Click Event</button>
+            <span class="jQuerySpan">Click this button to trigger the click event.</span>
+            <hr>
+        </div>
+        <div class="jQueryBlock">
+            <p>Hide</p>
+            <button class="hideButton">Hide</button>
+            <span id="hideSpan">Click this button to hide this text.</span>
+            <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Show</p>
+                <button class="ShowButton">Show</button>
+                <span>Click this button to show more text.</span>
+                <span id="showSpan">Salutations!</span>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Toggle</p>
+                <button class="toggleButton">Toggle</button>
+                <span>Click this button to show or hide a spoiler!</span>
+                <span id="toggleSpan">Snape kills Dumbledor!</span>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Slide Down</p>
+                <button class="slideDownButton">Slide Down</button>
+                <span>Click this button to slide down a div.</span>
+                <div class="slideDiv" id="slideDownDiv"></div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Slide Up</p>
+                <button class="slideUpButton">Slide Up</button>
+                <span>Click this button to slide up a div.</span>
+                <div class="slideDiv" id="slideUpDiv"></div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Slide Toggle</p>
+                <button class="slideToggleButton">Slide Toggle</button>
+                <span>Click this button to toggle the slide of a div.</span>
+                <div class="slideDiv" id="toggleDiv"></div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Fade In</p>
+                <button class="fadeInButton">Fade In</button>
+                <span>Click this button to fade in a div.</span>
+                <div class="slideDiv" id="fadeInDiv"></div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Fade out</p>
+                <button class="fadeOutButton">Fade Out</button>
+                <span>Click this button to fade out a div.</span>
+                <div class="slideDiv" id="fadeOutDiv"></div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Add Class</p>
+                <button class="addClassButton">Add Class</button>
+                <span id="classSpan">Click this button to add class 'red' to this paragraph.</span>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Before</p>
+                <button class="beforeButton">Before</button>
+                <span id="beforeSpan">to add text before the start of this paragraph.</span>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>After</p>
+                <button class="afterButton">Before</button>
+                <span id="afterSpan">Click this button</span>
+                <hr>
+        </div>
+        <div class="jQueryBlock" id="Append">
+                <p >Append</p>
+                <button class="appendButton">Append</button>
+                <span>Click this button to append span tags with Quack!</span>
+                <div id="quacktastic"></div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>HTML</p>
+                <button class="htmlButton">HTML</button>
+                <div class="JQDiv" id="htmlDiv">
+                <span id="htmlSpan">Click this button to change the HTML of the span to its inner html.</span>
+                </div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Attr</p>
+                <button class="attrButton">Attr</button>
+                <div class="JQDiv" id="attrDiv">
+                <span id="attrSpan">Click this button to display the id attribute of the div that contains this span.</span>
+                </div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Val</p>
+                <select class="valSelect">
+                    <option>First Option</option>
+                    <option>Second Option</option>
+                </select>
+                <div class="JQDiv" id="valDiv">
+                    <span id="valSpan">Select an option to display</span>
+                </div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Text</p>
+                <button class="textButton">Text</button>
+                <div class="JQDiv" id="txtDiv">
+                    <span id="txtSpan0">Click this buton to swap the texts: </span>
+                    <span id="txtSpan1">I started on the left.</span>
+                    <span id="txtSpan2">I started on the right.</span>
+                </div>
+                <hr>
+        </div>
+        <div class="jQueryBlock">
+                <p>Data</p>
+                    <button class="dataButton">Data</button>
+                <div class="JQDiv" >
+                    <span id="dataSpan">Click this button to display the data stored in an object.</span>
+                </div>
+                <div id="dataDiv">
+                    <span id="dataSpan1"></span>
+                    and 
+                    <span id="dataSpan2"></span>
+                </div>
+                <hr>
+        </div>
+    </div>
+    
+</body>
+</html>

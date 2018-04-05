@@ -1,0 +1,30 @@
+Git - Repository System
+GitHub - Version control system
+	seperates diffrent versions of software, protects master version from mistakes
+
+	Terminal common commands
+
+	Location and Movement
+	pwd - current directory
+	ls - list all folders
+	cd 'folderName' - change directory child folder
+	cd .. - move up one folder ( to parent)
+	cd / - move to root directory
+	cd ~ - root dir of user where terminal opens to
+
+	Folders and files
+	mkdir [folder name] - create new dir
+	rmdir [folder name] - delete empty folder -r remove all files within
+	touch [filename] - create new file
+	rm [file name] - remove file -i ask permission
+
+	mv [current file name] [new file name]
+	mv [filepath and name] [filepath destination]- moves file
+
+	cp [file to copy] [new name of copied file]
+	cp -rf [folder to copy] [folder destination]
+
+	mv [folder to move] [folder destination]
+
+	open dir in finder open .
+

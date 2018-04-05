@@ -1,0 +1,87 @@
+Last login: Sat Mar 24 13:19:28 on console
+Michaels-MacBook-Pro:~ michaelmansperger$ cd desktop
+Michaels-MacBook-Pro:desktop michaelmansperger$ mkdir gittest
+Michaels-MacBook-Pro:desktop michaelmansperger$ cd gittest
+Michaels-MacBook-Pro:gittest michaelmansperger$ touch index.html styles.css aboutMe.txt
+Michaels-MacBook-Pro:gittest michaelmansperger$ open index.html
+Michaels-MacBook-Pro:gittest michaelmansperger$ git init
+Initialized empty Git repository in /Users/michaelmansperger/Desktop/gittest/.git/
+Michaels-MacBook-Pro:gittest michaelmansperger$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	aboutMe.txt
+	index.html
+	styles.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+Michaels-MacBook-Pro:gittest michaelmansperger$ git add .
+Michaels-MacBook-Pro:gittest michaelmansperger$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   aboutMe.txt
+	new file:   index.html
+	new file:   styles.css
+
+Michaels-MacBook-Pro:gittest michaelmansperger$ git commit -m "updated about me" 
+[master (root-commit) ead5203] updated about me
+ 3 files changed, 2 insertions(+)
+ create mode 100644 aboutMe.txt
+ create mode 100644 index.html
+ create mode 100644 styles.css
+Michaels-MacBook-Pro:gittest michaelmansperger$ git add .
+Michaels-MacBook-Pro:gittest michaelmansperger$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+
+Michaels-MacBook-Pro:gittest michaelmansperger$ git commit -m "added favorite movie to aboutMe"
+[master 8cd1f40] added favorite movie to aboutMe
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Michaels-MacBook-Pro:gittest michaelmansperger$ git log
+commit 8cd1f407be9df87eea1f8997520e5fa7e1817c82 (HEAD -> master)
+Author: ManspergerMichael <ManspergerMichael@gmail.com>
+Date:   Sat Mar 24 14:05:05 2018 -0700
+
+    added favorite movie to aboutMe
+
+commit ead5203ec946dcc4950e72dd376075d097abec3d
+Author: ManspergerMichael <ManspergerMichael@gmail.com>
+Date:   Sat Mar 24 14:02:37 2018 -0700
+
+    updated about me
+Michaels-MacBook-Pro:gittest michaelmansperger$ git reset HEAD~
+Unstaged changes after reset:
+M	aboutMe.txt
+Michaels-MacBook-Pro:gittest michaelmansperger$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   aboutMe.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Michaels-MacBook-Pro:gittest michaelmansperger$ git add aboutMe.txt
+Michaels-MacBook-Pro:gittest michaelmansperger$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+
+Michaels-MacBook-Pro:gittest michaelmansperger$ git commit -m "added favorite book"
+[master a637c50] added favorite book
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Michaels-MacBook-Pro:gittest michaelmansperger$ 
