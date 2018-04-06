@@ -1,6 +1,7 @@
 <html>
     <body>
-        <form action="{{url_for('submit')}}" method="POST">
+        <!-- action sends form to submit function in server.py "{{url_for('submit')}}"-->
+        <form action='/process' method="POST">
             <label for="fName">First Name:</label>
             <input type="text" name="fName">
             <label for="lName">Last Name:</label>
