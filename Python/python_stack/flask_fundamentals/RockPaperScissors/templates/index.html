@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Rock Paper Scissors</h1>
+    <p>Wins: {{session['wins']}}</p>
+    <p>Losses: {{session['losses']}}</p>
+    <p>Ties: {{session['ties']}}</p>
+    <p>{{session['message']}}</p>
+
+    <form action='/process' method="POST" id="choice">
+        <input type="submit" value="rock" name='playerSelect'>
+        <input type="submit" value="paper" name='playerSelect'>
+        <input type="submit" value="scissors" name='playerSelect'>
+    </form>
+    
+</body>
+</html>
