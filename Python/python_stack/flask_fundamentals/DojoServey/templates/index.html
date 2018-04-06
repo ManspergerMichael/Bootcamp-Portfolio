@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <!-- action sends form to submit function in server.py "{{url_for('submit')}}"-->
+        <form action='/result' method="POST" id="serveyForm">
+            <label for="Name">Your Name:</label>
+            <input type="text" name="Name">
+        
+        <label for="Location">Dojo Location:</label>
+        <select name="Location" form="serveyForm">
+            <option value="Seattle">Seattle</option>
+            <option value="Los Angles">Los Angels</option>
+        </select>
+        <label for="Langwage">Faveorite Language:</label>
+        <select name="Langwage" form="serveyForm">
+            <option value="Python">Python</option>
+            <option value="C#">C#</option>
+        </select>
+        <label for="comment">Comment (optional):</label>
+        <textarea name="comment" form="serveyForm" rows="10" cols="30"></textarea>
+        <input type="submit" form="serveyForm">
+    </form>
+    </body>
+</html>
