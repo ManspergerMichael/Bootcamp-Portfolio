@@ -3,11 +3,9 @@
         <!-- action sends form to submit function in server.py "{{url_for('submit')}}"-->
         {% with messages = get_flashed_messages() %}
          {% if messages %}
-            <ul>
                {% for message in messages %}
-               <li<{{ message }}</li>
+                <p>{{ message }}</p>
                {% endfor %}
-            </ul>
          {% endif %}
       {% endwith %}
         <form action='/result' method="POST" id="serveyForm">
