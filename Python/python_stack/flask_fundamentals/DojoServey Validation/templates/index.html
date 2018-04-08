@@ -1,13 +1,15 @@
 <html>
     <body>
         <!-- action sends form to submit function in server.py "{{url_for('submit')}}"-->
-        {% with messages = get_flashed_meassages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    {{message}}
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+        {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+               <li<{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
         <form action='/result' method="POST" id="serveyForm">
             <label for="Name">Your Name:</label>
             <input type="text" name="Name">
