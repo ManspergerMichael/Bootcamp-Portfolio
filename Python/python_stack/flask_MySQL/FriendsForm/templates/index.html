@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+    <!-- use line below to see all of the data in the template -->
+  <!--{{all_friends}}-->
+  <h1>FRIENDS:</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Friend Since</th>
+      <th></th>
+    </tr>
+  {% for friend in all_friends: %}
+  <!--now we can use a for loop to unpack all data retrieved with the query-->
+    <tr>
+    <td>{{friend['name']}}</td>
+    <td>{{friend['age']}}</td>
+    <td>{{friend['friend_since']}}</td>
+    <td>{{friend['year']}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+  <h2>Add a Friend</h2>
+  <form action='/friends' method='POST'>
+    <label for="name">Name:<input type="text" name="name" id="name"></label>
+    <label for="age">Age:<input type="text" name="age" id="age"></label>
+    <input type="submit" value="Add">
+  </form>
+</body>
+</html>
