@@ -1,0 +1,12 @@
+<p>The email address you entered {{session['entered_email']}} is a VALID email address! Thank You!</p>
+<table>
+    <tr>
+        <th>Email Addresses Entered:</th>
+    </tr>
+    {% for x in all_Emails: %}
+    <tr>
+        <td>{{x['email']}}</td>
+        <td>{{x['date_entered']}}</td>
+    </tr>
+    {% endfor %}
+</table>
