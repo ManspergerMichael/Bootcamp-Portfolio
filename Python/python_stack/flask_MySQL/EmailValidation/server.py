@@ -13,6 +13,7 @@ def index():
 
 @app.route('/validate', methods=["POST"])
 def validate():
+    #flag for searching email table for entered email
     isEmailinDB = False
     #validate entered email is in db
     session['entered_email'] = request.form['email']
@@ -26,21 +27,14 @@ def validate():
                 isEmailinDB = True
         if isEmailinDB == False:
             query = "INSERT INTO emails (email, date_entered) values(:email, NOW())"
-            data = {
-                'email' : request.form['email']
-            }
+            data = {'email' : request.form['email']}
             mysql.query_db(query, data)
             return redirect('/sucsess')
         else:
             return redirect('/sucsess')
-'''
     else:
-        flash("Invalid email")
+        flash("Invalid email format, you twice baked moron!")
         return redirect('/')
-    #IF valid: insert email to database
-
-    
-     '''   
 
 #Redirect to sucsess page with list of email addresses in DB
 @app.route('/sucsess')

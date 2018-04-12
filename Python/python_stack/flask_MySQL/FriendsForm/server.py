@@ -18,7 +18,6 @@ def create():
     data = {
              'name': request.form['name'],
              'age':  request.form['age']
-
            }
     # Run query, with dictionary values injected into the query.
     mysql.query_db(query, data)
