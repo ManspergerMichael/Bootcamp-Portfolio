@@ -13,19 +13,34 @@ def index():
 
 @app.route('/validate', methods=["POST"])
 def validate():
-    #validate using regex
-    if not EMAIL_REGEX.match(request.form['email']):
-        flash("THATS NOT A VALID EMAIL YOU TWICE BAKED MORON!")
+    isEmailinDB = False
+    #validate entered email is in db
+    session['entered_email'] = request.form['email']
+    if (EMAIL_REGEX.match(request.form['email'])):
+        allEmails = mysql.query_db("SELECT * FROM emails")
+        #if entered email is NOT in allEmails insert into db
+        for email in allEmails:
+            if request.form['email'] != email['email']:
+                pass
+            else:
+                isEmailinDB = True
+        if isEmailinDB == False:
+            query = "INSERT INTO emails (email, date_entered) values(:email, NOW())"
+            data = {
+                'email' : request.form['email']
+            }
+            mysql.query_db(query, data)
+            return redirect('/sucsess')
+        else:
+            return redirect('/sucsess')
+'''
+    else:
+        flash("Invalid email")
         return redirect('/')
     #IF valid: insert email to database
-    else:
-        session['entered_email'] = request.form['email']
-        query = "INSERT INTO emails (email, date_entered) values(:email, NOW())"
-        data = {
-            'email' : request.form['email']
-        }
-        mysql.query_db(query, data)
-        return redirect('/sucsess')
+
+    
+     '''   
 
 #Redirect to sucsess page with list of email addresses in DB
 @app.route('/sucsess')
