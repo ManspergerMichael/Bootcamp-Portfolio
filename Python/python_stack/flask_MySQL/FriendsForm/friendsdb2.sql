@@ -11,18 +11,18 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `friendsdb2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `friendsdb2` ;
+CREATE SCHEMA IF NOT EXISTS `usersLRform` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `usersLRform` ;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`friends`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `friendsdb2`.`friends` (
+CREATE TABLE IF NOT EXISTS `usersLRform`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `age` INT(200) NULL,
-  `friend_since` DATETIME NULL,
-  `year` YEAR  NULL,
+  `first_name` VARCHAR(255) NULL,
+  `last_name` VARCHAR(255) NULL,
+  `email` VARCHAR(255) NULL,
+  `password` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

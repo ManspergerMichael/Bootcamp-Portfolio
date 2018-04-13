@@ -1,0 +1,37 @@
+{% with messages = get_flashed_messages() %}
+         {% if messages %}
+               {% for message in messages %}
+                <p>{{ message }}</p>
+               {% endfor %}
+         {% endif %}
+      {% endwith %}
+
+<h3>Post a Message</h3>
+<form action="/message" method="POST" id="messageForm">
+<textarea name="message" form="messageForm" rows="5" cols="100"></textarea>
+<input type="submit" value="Post a message">
+</form>
+
+<!--Gather all messages-->
+<!--Loop1 through message result set and print-->
+<!--Loop2 through comments, print comments with matching message id-->
+<!--End Loop2-->
+<!--End Loop1-->
+{% for message in all_messages %}
+    <p>{{message['first_name']}} {{message['last_name']}} {{message['created_at']}}</p>
+    <p>{{message['message']}}</p>
+    <!--<p>Message ID: {{message['id']}}</p>-->
+    {% for comment in all_comments %}
+        {% if comment['messages_id'] == message['id']%}
+        <p>{{comment['first_name']}} {{comment['last_name']}} {{comment['created_at']}}</p>
+        <p>{{comment['comment']}}</p>
+        {% endif %}
+    {% endfor%}
+    <h3>Post a Comment</h3>
+    <form action='/comment' method='POST'>
+        <input type='hidden' name='messageID' value={{message['id']}}>
+        <textarea name='message'  rows='5' cols='100'></textarea>
+        <input type='submit' value='comment'>
+    </form>
+{% endfor %}
+
