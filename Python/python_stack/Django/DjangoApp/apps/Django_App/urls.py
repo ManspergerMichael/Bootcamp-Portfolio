@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from . import views           # This line is new!
 urlpatterns = [
-#url(r'^/index', views.index), # This means any URL passed in will go to index, don't use
+#url(r'^', views.index), # This means any URL passed in will go to index, don't use
 url(r'^display', views.index),
 url(r'^new', views.new),
 url(r'^create', views.create),
