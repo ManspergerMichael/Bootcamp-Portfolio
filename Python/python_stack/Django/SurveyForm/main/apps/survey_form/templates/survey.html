@@ -1,0 +1,18 @@
+<form action="/survey_form/result" method="POST" id="survey">
+    {% csrf_token %}
+    <label for="name">Your Name: <input type="text" name="name"></label>
+    <label for="location">Location:</label>
+    <select name="location" form="survey">
+        <option value="Seattle">Seattle</option>
+        <option value="Los Angles">Los Angles</option>
+    </select>
+    <label for="language">Faveorite language:</label>
+    <select name="language" form="survey">
+        <option value="Python">Python</option>
+        <option value="Javascript">Javascript</option>
+        <option value="French">French</option>
+    </select>
+    <label for="comment">Comment(optional):</label>
+    <textarea name="comment" rows="10" cols="30" form="survey"></textarea>
+    <input type="submit" value="Submit">
+</form>

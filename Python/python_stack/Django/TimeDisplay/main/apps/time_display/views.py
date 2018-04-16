@@ -10,4 +10,4 @@ def index(request):
     context = {
         "time" : strftime("%Y-%m-%d %H:%M %p", gmtime())
     }
-    return render(request, "timeDisplay.html", context)
+    return render(request, "time_display/timeDisplay.html", context)

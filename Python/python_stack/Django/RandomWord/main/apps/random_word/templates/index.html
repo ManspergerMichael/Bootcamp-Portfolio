@@ -1,7 +1,7 @@
 <h3>Random Word (attempt #{{request.session.attempts}})</h3>
 <p>{{word}}</p>
 
-<form action="localhost:8000/random_word/reset" method="POST">
+<form action="/random_word/reset" method="POST">
     {% csrf_token %}
     <input type="submit" value="Generate">
 </form>

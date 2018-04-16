@@ -13,8 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include,static  # Notice we added include
+from django.conf.urls import url, include
 from django.contrib import admin
 urlpatterns = [
-    url(r'^time_display/', include('apps.time_display.urls')) # And now we use the include function to pull in our first_app.urls...
-] 
+    url(r'^survey_form/', include('apps.survey_form.urls')),
+]
