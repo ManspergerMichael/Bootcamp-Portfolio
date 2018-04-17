@@ -1,0 +1,26 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.wordForm{
+    display: inline-block;
+}
+
+.sessionDiv{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 1000px;
+}
+.container{
+    display: inline-block;
+}
+
+.vl {
+    border-left: 6px solid black;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+}
