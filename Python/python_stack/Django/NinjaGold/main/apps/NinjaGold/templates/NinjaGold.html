@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NinjaGold</title>
+    <link rel="stylesheet" href="{% static 'NinjaGold/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'NinjaGold/custom.css' %}">
+</head>
+<body>
+    <div class="container">
+        <span>Your Gold:</span> <span>{{request.session.totalGold}}</span>
+        <div class="formsContainer">
+                <div class="forms">
+                    <h4>Farm</h4>
+                    <p>(earns 10-20 golds)</p>
+                    <form method="POST" action="NinjaGold/process_money">
+                        {% csrf_token %}
+                        <input type="hidden" name="method" value="farm">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="forms">
+                    <h4>Cave</h4>
+                    <p>(earns 5-10 golds)</p>
+                    <form method="post" action="process_money">
+                        {% csrf_token %}
+                        <input type="hidden" name="method" value="cave">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="forms">
+                    <h4>House</h4>
+                    <p>(earns 2-5 golds)</p>
+                    <form method="POST" action="process_money">
+                        {% csrf_token %}
+                        <input type="hidden" name="method" value="house">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+                <div class="forms">
+                    <h4>Casino</h4>
+                    <p>(earns/takes 0-50 golds)</p>
+                    <form method="POST" action="process_money">
+                        {% csrf_token %}
+                        <input type="hidden" name="method" value="casino">
+                        <input type="submit" value="Find Gold!">
+                    </form>
+                </div>
+            </div>
+            <div class="activity">
+            <label for="textArea">Activities</label>
+            <textarea name="textArea" rows=10 cols="500">
+            {% for activity in request.session.activityList %}
+            {{activity.message}} {{activity.time}}
+            {% endfor%}
+            </textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
