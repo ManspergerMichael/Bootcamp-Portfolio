@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{% static 'Amadon/bootstrap.css' %}">
+</head>
+<body>
+    <h1>Thank you for your business!</h1>
+    <p>We charged your card for {{request.session.orderPrice}}</p>
+    <p>You have ordered {{request.session.totalItems}} items so far and spent</p>
+    <p>{{request.session.totalSpent}} with Amadon.com!</p>
+    <a href="Amadon/cart">Go Back</a>
+</body>
+</html>
