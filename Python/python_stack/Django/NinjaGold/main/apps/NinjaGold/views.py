@@ -46,5 +46,6 @@ def process_money(request, methods="POST"):
     }
 
     request.session['activityList'].append(activity)
+    request.session.modified = True
 
     return redirect('/NinjaGold')
