@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users Index</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for users in context %}
+                {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td><a href="{% url 'show' id='user.id' %}"> 
+                </a>{{user.first_name}} {{user.last_name}}</a></td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at}}</td>
+                <td><form action="{%url 'show' id='user.id'%}" method="POST">
+                    {csrf_token}
+                    <input type="hidden" name="user_id" value={{user.id}}>
+                    <input type="submit" value="Show">
+                </form></td>
+                <td><form action="{%url 'edit' id='user.id'%}" method="POST">
+                    {csrf_token}
+                    <input type="hidden" name="user_id" value={{user.id}}>
+                    <input type="submit" value="Edit">
+                </form></td>
+                <td><form action="{%url 'delete' id='user.id'%}" method="POST">
+                    {csrf_token}
+                    <input type="hidden" name="user_id" value={{user.id}}>
+                    <input type="submit" value="Delete">
+                </form></td>
+            </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{%url 'new'%}">Add a new user</a>
+    
+</body>
+</html>
