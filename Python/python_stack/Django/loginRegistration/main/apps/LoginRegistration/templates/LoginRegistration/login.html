@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    <form action="{% url 'register'%}" method="POST">
+        <label for="first_name">First Name: <input type="text" name="first_name"></label>
+        <label for="last_name">Last Name: <input type="text" name="last_name"></label>
+        <label for="email">Email: <input type="text" name="email"></label>
+        <label for="password">password: <input type="text" name="password"></label>
+        <label for="Confirm_pw">Confirm pw: <input type="text" name="Confirm_pw"></label>
+        <input type="submit" value="Register">
+    </form>
+    
+</body>
+</html>
