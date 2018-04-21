@@ -8,15 +8,15 @@
 </head>
 <body>
     <h1>Edit User 1</h1>
-    <form action="{url 'edit'}" method="POST">
-        <label for="first_name"><input type="text" name="first_name"></label>
-        <label for="last_name"><input type="text" name="last_name"></label>
-        <label for="Email"><input type="text" name="last_name"></label>
-        <input type="hidden" name='id'value="{{user.id}}"
+    <form action="{%url 'editprocess' id=user.id%}" method="POST">
+        {% csrf_token %}
+        <label for="first_name"><input type="text" name="first_name" value="{{user.first_name}}"></label>
+        <label for="last_name"><input type="text" name="last_name" value="{{user.last_name}}"></label>
+        <label for="Email"><input type="text" name="email"  value="{{user.email}}"></label>
         <button type="submit" value="edit">Update</button>
     </form>
 
-    <a href="{url 'new'}">Show</a>
-    <a href="{url 'index'}">Go Back</a>
+    <a href="{%url 'show' id=user.id%}">Show</a>
+    <a href="{%url 'index'%}">Go Back</a>
 </body>
 </html>

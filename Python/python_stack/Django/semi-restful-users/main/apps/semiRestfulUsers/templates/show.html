@@ -7,6 +7,12 @@
     <title>Show</title>
 </head>
 <body>
-    
+    <h1>User: {{user.id}}</h1>
+    <p>Full Name: {{user.first_name}} {{user.last_name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Created at: {{user.created_at}}</p>
+
+    <a href="{% url 'editPage' id=user.id %}">Edit</a>
+    <a href="{% url 'delete' id=user.id %}">Delete</a>
 </body>
 </html>
