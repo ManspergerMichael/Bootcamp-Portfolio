@@ -40,6 +40,10 @@ class users(models.Model):
     last_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
+    salt = models.CharField(max_length=255)
+    
+    def __repr__():
+        print self.first_name, self.last_name, self.email, self.password, self.salt
     #this includes the users manager object in the user object, extends the functionality of the object
     objects = usersManager()
 
