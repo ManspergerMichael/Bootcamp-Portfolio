@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books Home</title>
+</head>
+<body>
+    <div class="nav">
+    <a href="{% url 'add'%}">Add Book and Review</a>
+    <a href="{% url 'login' %}">logout</a>
+    </div>
+    <h3>Welcome {{user.full_name}}</h3>
+
+    <h4>Recent Book Reviews:</h4>
+
+    <!-- table that displays the users reviews-->
+    <!-- table that displays the other books in the db-->
+
+    
+</body>
+</html>

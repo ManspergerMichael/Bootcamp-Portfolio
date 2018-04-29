@@ -15,30 +15,30 @@ class usersManager(models.Manager):
             print "Register validation"
             if self.filter(email=postData['email']).exists(): #checks if a record with a matching email address exists in the database
                 errors['Email error'] = 'Email address is allready registered'
-            if len(postData['first_name'])< 2:
-                errors['first_name'] = "First name should be more than 2 characters"
-            if len(postData['last_name'])< 2:
-                errors['Last Name'] = "Last name should be more than 2 characters"
-            if not NAME_REGEX.match(postData['first_name']):
-                errors['First name Format'] = "First name can only have characters"
-            if not NAME_REGEX.match(postData['last_name']):
-                errors["Last Name Format"] = "Last name can only have characters"
+            if len(postData['full_name'])< 2:
+                errors['full_name'] = "First name should be more than 2 characters"
+            if len(postData['alias'])< 2:
+                errors['Alias'] = "Alias should be more than 2 characters"
+            if not NAME_REGEX.match(postData['full_name']):
+                errors['Full name Format'] = "Full name can only have characters"
             if not EMAIL_REGEX.match(postData['email']):
                 errors['Email Format'] = "Email is not in proper format"
-            if postData['password'] != postData['Confirm_pw']:
+            if postData['password'] != postData['confirm_pw']:
                 errors['Password'] = 'Passwords do not match'
             if len(postData['password']) < 8:
                 errors['Password Length'] = "Password should be longer than 8 characters"
+            if len(errors) == 0:
+                hash1 = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt())
+                user.objects.create(full_name = postData['full_name'], Alias = postData['alias'],email=postData['email'], password = postData['password'], salt = hash1 )
         
         elif postData['type'] == 'login':
-            print "login validation"
             #if email is not found create error message, 
             if not self.filter(email=postData['email']).exists():
                     #self is equivilant to users.objects in this scope
                 errors['Email error'] = 'Email address is not registered'
             #else get user object via email match, check password 
             else:
-                this_user = users.objects.get(email = postData['email']) 
+                this_user = user.objects.get(email = postData['email']) 
                 if not bcrypt.checkpw(postData['password'].encode(), this_user.salt.encode()):
                     errors['Password Error'] ='Password is invalid'
         
@@ -46,14 +46,17 @@ class usersManager(models.Manager):
         return errors
 
 
-class users(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+class user(models.Model):
+    full_name = models.CharField(max_length=255)
+    Alias = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     salt = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     def __repr__():
         print self.first_name, self.last_name, self.email, self.password, self.salt
     #this includes the users manager object in the user object, extends the functionality of the object
     objects = usersManager()
+
 

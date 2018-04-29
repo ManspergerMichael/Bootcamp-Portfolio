@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome!</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h3>Register</h3>
+    <form action="{% url 'process'%}" method="POST">
+        {% csrf_token %}
+        <label for="full_name">Name: <input type="text" name="full_name"></label>
+        <label for="alias">Alias: <input type="text" name="alias"></label>
+        <label for="email">email: <input type="text" name="email"></label>
+        <label for="password">password: <input type="text" name="password"></label>
+        <label for="confirm_pw">confirm password: <input type="text" name="confirm_pw"></label>
+        <input type="hidden" name="type" value="register">
+        <input type="submit" value="Register">
+    </form>
+    <h3>Login</h3>
+    <form action="{% url 'process'%}" method="POST">
+        {% csrf_token %}
+        <label for="email">Email: <input type="text" name="email"></label>
+        <label for="password">Password: <input type="text" name="password"></label>
+        <input type="hidden" name="type" value="login">
+        <input type="submit" value="Login">
+    </form>
+    
+</body>
+</html>
