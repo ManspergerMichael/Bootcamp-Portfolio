@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyGithub</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        //$.get("https://api.github.com/users/ManspergerMichael", displayName)
+        //function displayName(data){
+        //    console.log(data);
+        //}
+        $('button.show').click(function(){
+            $.get("https://api.github.com/users/ManspergerMichael", displayName)
+                function displayName(data){
+                $('#info').append("<p>"+data.login+"</p>");
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button class="show">Show My Github Info!</button>
+        <div id="info"></div>
+    </div>
+    
+</body>
+</html>
