@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        $(document).ready(function(){
+            var points = 0;
+            $.get("https://opentdb.com/api.php?amount=10&type=multiple", prepareGame)
+            function prepareGame(data){
+                for(let i = 0; i < data.results.length; i++){
+                //console.log(data.results[i]);
+                let formString = "";
+                formString += "<form id="+i+"><input type='radio' name='correctAnswer' value='"+data.results[i].correct_answer+"'>"+data.results[i].correct_answer+"<br>"
+                for(let j = 0; j < data.results[i].incorrect_answers.length; j++){
+                //console.log("question:"+data.results[i].question+"Incoreect answers:"+data.results[i].incorrect_answers[j]);
+                formString += "<input type='radio' name='answer' value='"+data.results[i].incorrect_answers[j]+"'>"+data.results[i].incorrect_answers[j]+"<br>";
+                }
+                formString +="<input type='submit' value='Answer' class='submit'></form>"
+                $('#game').append("<div class='question'><p>Category: "+data.results[i].category+"</p><p> Difficulty: "+data.results[i].difficulty+"</p><p>Question: "+data.results[i].question+"</p>"+formString+"</div>");
+                formString = "";
+                }
+                //$('#game').append(data)
+            }
+
+            $(document).on("submit", "form", function(event){
+                var form = $(this).attr('id');
+                //console.log(form);
+                var answer = $("input[name=answer]:checked").val();
+                var correctAnswer = $('#'+form, 'input[name=correctAnswer]').val();
+                //console.log($(form, 'input[name=correctAnswer]').prevObject[form].defaultValue);
+                if(answer == correctAnswer){
+                    alert("Correct!");
+                    points += 100;
+                    $("#points").text(points);
+                }
+                else{
+                    alert("WRONG, WRONG, WRONG!!!");
+                }
+                $("input[name=answer]:checked").prop('checked', false)
+
+                event.preventDefault();
+            })
+        });
+    </script>
+    <!-- trivia api: https://opentdb.com/api.php?amount=10&category=18&difficulty=medium -->
+    <title>Trivia Game</title>
+</head>
+<body>
+    <div class="Container">
+        
+        <div class="top">
+            <a>Continue with new questions</a>
+            <h1>Trivia Night</h1>
+            <h1 id="points"></h1><h1>Points</h1>
+        </div>
+        <div id="game">
+
+        </div>
+    </div>
+    
+</body>
+</html>
