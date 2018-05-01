@@ -1,0 +1,4 @@
+Trivia game uses the Open Triva Database API to get 10 random trivia questions. 
+I have the framework for the game set up and can inform the user if they got the answer right or wrong.
+To do for later: Impove game logic, harder questions get more points
+                Randomize placement of correct answer, currently top selection is alwase right answer
