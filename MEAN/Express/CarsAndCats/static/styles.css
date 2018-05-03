@@ -1,0 +1,10 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    background-color: aliceblue;
+}
+
+.images img{
+    padding: 5px;
+    display: inline-block;
+}
