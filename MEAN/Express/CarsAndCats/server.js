@@ -2,7 +2,6 @@ var express = require("express");
 var app = express();
 
 app.use(express.static(__dirname + "/static"));
-//app.set('view engine', 'html');
 
 app.get('/cars', function(request,response){
     response.sendFile('cars.html',{root : __dirname});
