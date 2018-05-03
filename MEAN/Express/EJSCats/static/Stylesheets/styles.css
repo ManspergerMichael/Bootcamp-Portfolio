@@ -1,0 +1,21 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    background-color: aliceblue;
+}
+
+.images img{
+    padding: 5px;
+    display: block;
+    left: 50%;
+}
+.images{
+    margin-left: 40%
+}
+h1{
+    text-align: center;
+    background-color: red;
+}
+.info{
+    margin-left:40%;
+}
