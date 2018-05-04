@@ -16,7 +16,7 @@ app.get('/', function(request, response){
 app.post('/result', function(request, response){
     console.log("form posted");
     console.log(request.body.name);
-    response.redirect('/', request)
+    response.render('result', {result:request.body})
 })
 app.listen(8000, function(errs){
     console.log("Server at 8000");
