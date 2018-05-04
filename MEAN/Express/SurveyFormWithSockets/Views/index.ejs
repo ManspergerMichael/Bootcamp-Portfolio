@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document). ready(function (){
+    
+            var socket = io(); //1
+    
+            socket.on('greeting', function (data) { //4
+                console.log(data.msg); //5
+                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+            });
+        //user submits form
+            $("#form").submit(function(event){
+               event.preventDefault();
+               console.log("You clicked submit!")
+               survey = {
+                    name : $('#name').val(),
+                    location : $('#location').val(),
+                    language : $('#language').val(),
+                    comment : $('#comment').val(),
+               }
+               
+               //console.log($(this).serialize());
+               socket.emit('posting_form', { msg: survey });
+            })
+            socket.on('updated_message', function (data){
+                console.log(data.msg);
+                $("#socketResponse").append(data.msg);
+            })
+            socket.on('random_number', function(data){
+                $("#socketResponse").append(data.msg);
+            })
+         })
+    </script>
+</head>
+<body>
+    <p id="socketResponse"></p>
+    <h1>Hello</h1>
+    <form action="" method="POST" id="form">
+        Name:<input type="text" name="name" id="name" value="">
+        Dojo Location:<select name="location" id="location">
+            <option value="Seattle">Seattle</option>
+            <option value="Washington D.C">Washington D.C</option>
+        </select>
+        Faveorite Language: <select name="language" id="language">
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+        </select>
+        Comment: <textarea name="comment" id="comment" rows="10" cols="30"></textarea>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
