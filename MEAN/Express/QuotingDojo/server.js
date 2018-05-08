@@ -13,13 +13,13 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.connect('mongodb://localhost/quotes');
-var QuoteSchema = new mongoose.Schema({ //creates the model to be sent to the DB
+var QuoteSchema = new mongoose.Schema({ 
     name: String,
     quote: String
    }, {timestamps: true});
 
-mongoose.model('Quote', QuoteSchema); // We are setting this Schema in our Models as 'Quote'
-var Quote = mongoose.model('Quote') // We are retrieving this Schema from our Models, named 'User'
+mongoose.model('Quote', QuoteSchema); 
+var Quote = mongoose.model('Quote'); 
 
 app.get('/', function(request,response){
     response.render('index');

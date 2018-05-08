@@ -1,0 +1,34 @@
+*{
+    padding: 0px;
+    margin:0px;
+}
+
+.container{
+    width: 100%;
+}
+h1{
+    width: 100%;
+    text-align: center;
+}
+h3{
+    width: 100%;
+    text-align: center;
+}
+
+.quotes{
+    width: 100%;
+    text-align: center;
+}
+p{
+    padding-left: 20px;
+}
+.mechs{
+    width: 100%;
+}
+.mechs td {
+    text-align: center;
+}
+.mechs th {
+    padding-left: 5%;
+}
+

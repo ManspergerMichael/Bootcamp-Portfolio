@@ -14,8 +14,8 @@
         <div class="quotes">
             <!--ejs goes here -->
             <% for (item in quotes) {%>
-               <h3><%= quotes[item].quote %></h3>
-               <p><%= quotes[item].name%> At: <%= quotes[item].createdAt%></p>
+               <h3>"<%= quotes[item].quote %>"</h3>
+               <p>-<%= quotes[item].name%> At: <%= quotes[item].createdAt%></p>
                 <%}%>
         </div>
     </div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/custom.css">
+    <title>Mechs</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Mechs Database</h1>
+    </div>
+    <div class="mechs">
+        <table>
+            <tr>
+                <th>Mech Name</th>
+                <th>Weight Class</th>
+                <th>Faction</th>
+                <th>Hardpoints</th>
+                <th>Actions</th>
+            </tr>
+            <% for (value in mechs){ %>
+                <tr>
+                    <td><a href="/id/<%= mechs[value]._id%>"><%= mechs[value].name %></a></td>
+                    <td><%= mechs[value].class %></td>
+                    <td><%= mechs[value].faction %></td>
+                    <td><%= mechs[value].hardpoints %></td>
+                    <td><a href="/edit/<%= mechs[value]._id%>">Edit</a> <a href="/delete/<%= mechs[value]._id%>">Delete</a></td>
+                </tr>
+            <%}%>
+        </table>
+    </div>
+    <div class="navigation">
+        <a href="/new" class="btn btn-default">Add new Mech</a>
+    </div>
+    
+</body>
+</html>

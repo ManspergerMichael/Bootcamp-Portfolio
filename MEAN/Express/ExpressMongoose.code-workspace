@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "basic_mongoose_app"
+		},
+		{
+			"path": "SurveyForm"
+		},
+		{
+			"path": "EJSCats"
+		},
+		{
+			"path": "QuotingDojo"
+		},
+		{
+			"path": "MongooseDashboard"
+		}
+	],
+	"settings": {}
+}
