@@ -1,0 +1,16 @@
+*{
+    padding: 0px;
+    margin:0px;
+}
+
+.container{
+    width: 100%;
+}
+h1{
+    width: 100%;
+    text-align: center;
+}
+.quotes{
+    width: 100%;
+    text-align: center;
+}

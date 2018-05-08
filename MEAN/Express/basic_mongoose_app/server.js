@@ -1,9 +1,12 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+var fs = require('fs');
 let app = express();
+
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+
 app.use(express.static(__dirname+"/static"));
 app.set('views', __dirname+"/views");
 app.set('view engine', 'ejs');
@@ -28,14 +31,9 @@ app.get('/', function(request, response){
         }
         if(users){
             console.log(users);
-            list = [];
-            for (x in users){
-                //list.push({name: users.name, age: users.age})
-            }
-            response.render('index',{users: list});
+            response.render('index',{users :users});
         }
     })
-    response.render('index');
 })
 
 app.post('/users', function(request, response){
