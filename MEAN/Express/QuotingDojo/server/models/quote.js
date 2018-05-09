@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/quotes');
+//mongoose.connect('mongodb://localhost/quotes');
 var QuoteSchema = new mongoose.Schema({ 
     name: String,
     quote: String
@@ -25,4 +25,5 @@ module.exports = {
             return(err);
         })
     }
+
 }
