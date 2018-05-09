@@ -30,7 +30,7 @@ var UserSchema = new mongoose.Schema({
     firstname: {type: String, required: true, minlength:[4, "First name should be longer that 4 characters"]},
     lastname: {type: String, required: true, minlength: [4, "Last name should be longer that 4 characters"]},
     email: {type: mongoose.SchemaTypes.Email, required: true},
-    salt: {type: String, required: true}
+    password: {type: String, required: true, minlength:[8,"Password Should be longer than 8 characters"]}
    }, {timestamps: true});
 
 mongoose.model('User', UserSchema); 
@@ -46,7 +46,7 @@ app.get('/sucess', function(request,response){
 app.post('/login', function(request,response){
     //console.log(request.body);
     User.findOne({email:request.body.email}).exec(function(err,user){
-        bcrypt.compare(request.body.password, user.salt)
+        bcrypt.compare(request.body.password, user.password)
         .then( result => {
             console.log('match');
             response.redirect('/sucess');
@@ -65,16 +65,12 @@ app.post('/login', function(request,response){
 //register
 app.post('/register', function(request,response){
     //console.log(request.body);
-    if(request.body.password.length < 8){
-        request.flash('errors', "Password should be longer than 8 characters.");
-        response.redirect('/');
-    }
     //hash password
     bcrypt.hash(request.body.password, 10)
     .then(saltedPassword =>{
         //create user
         //console.log(saltedPassword);
-        var user = new User({firstname:request.body.firstname,lastname:request.body.lastname, email:request.body.email,salt:saltedPassword});
+        var user = new User({firstname:request.body.firstname,lastname:request.body.lastname, email:request.body.email,password:saltedPassword});
         user.save(function(err){
             if(err){
                 //console.log('something went wrong', err);
@@ -85,6 +81,7 @@ app.post('/register', function(request,response){
             }
             else{
                 console.log('successfully added a user');
+                //Error here
                 response.redirect('/sucess');
             }
         })
