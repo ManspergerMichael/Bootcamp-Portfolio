@@ -2,8 +2,18 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const flash = require('express-flash');
+const session = require('express-session');
 var fs = require('fs');
 let app = express();
+app.use(flash());
+
+app.set('trust proxy', 1)//trust first proxy
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge: 60000}
+}))
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -15,10 +25,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.connect('mongodb://localhost/Mechs');
 var MechSchema = new mongoose.Schema({ 
-    name: String,
-    class: String,
-    faction: String,
-    hardpoints: Number
+    name: {type: String, required: true, minlength:[4, "Name is too short"]},
+    class: {type: String, required: true, minlength: 4},
+    faction: {type: String, required: true, minlength: 4},
+    hardpoints: {type: Number, required: true}
    }, {timestamps: true});
 
 mongoose.model('Mech', MechSchema); 
@@ -30,7 +40,7 @@ app.get('/', function(request,response){
         if(err){
             console.log("Something went wrong.", err);
             for(var key in err.errors){
-                req.flash('errors', err,errors[key].message);
+                req.flash('errors', err.errors[key].message);
             }
             response.render('index');
         }
@@ -52,7 +62,11 @@ app.post('/processNew', function(request, response){
     var mech = new Mech({name : request.body.name, class : request.body.class, faction : request.body.faction, hardpoints : request.body.hardpoints});
     mech.save(function(err){
         if(err){
-            console.log('something went wrong');
+            console.log('something went wrong', err);
+            for(var key in err.errors){
+                request.flash('errors', err.errors[key].message);
+            }
+            response.redirect('/new');
         }
         else{
             console.log('successfully added a mech');

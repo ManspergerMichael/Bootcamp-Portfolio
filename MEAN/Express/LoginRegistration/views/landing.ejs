@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/custom.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Login and Registration</h1>
+        <div class="errors">
+            <%- JSON.stringify(messages) %>
+            <% if(messages.errors) {%>
+                <%for (var x of messages.errors) { %>
+                    <h4><%= x %></h4>
+                <%}%>
+            <%}%>
+        </div>
+        <div class="login">
+            <h4>Login</h4>
+            <form method='post' action='/login'>
+                Email:<input type="email" name='email'>
+                Password:<input type='password' name='password'>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <div class="registration">
+            <h4>Registration</h4>
+            <form method='post' action='/register'>
+                First Name:<input type='text' name='firstname'>
+                Last Name:<input type='text' name='lastname'>
+                Email:<input type='email' name='email'>
+                Password:<input type='password' data-minlength="8" name='password'>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

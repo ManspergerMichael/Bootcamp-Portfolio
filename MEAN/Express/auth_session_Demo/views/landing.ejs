@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/custom.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Auth and Session</h1>
+        <h4>Login</h4>
+        <form method='post' action='/sessions'>
+            Email:<input type='text' name='email'>
+            Password:<input type='password' name='password'>
+            <input type="submit" value="submit">
+        </form>
+        <h4>Registration</h4>
+        <form method='post' action='/users'>
+            First Name:<input type='text' name='first_name'>
+            Last Name:<input type='text' name='last_name'>
+            Enail:<input type='email' name='email'>
+            Password:<input type='password' name='password'>
+            <input type="submit" value="submit">
+        </form>
+        
+</body>
+</html>
