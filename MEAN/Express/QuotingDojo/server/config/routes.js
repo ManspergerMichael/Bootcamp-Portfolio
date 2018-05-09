@@ -10,6 +10,7 @@ app.get('/quotes', function(request,response){
 })
 
 app.post('/add', function(request,response){
+    console.log(request.body);
     quotes.addQuote(request,response);
 })
 }//end export

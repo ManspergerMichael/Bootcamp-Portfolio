@@ -10,7 +10,7 @@ app.use(express.static(__dirname+"/static"));
 app.set('views', __dirname+"/views");
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
-
+require('./server/database');
 require('./server/config/routes.js')(app);
 
 app.listen(8000, function(errs){

@@ -1,5 +1,6 @@
-var quote = require('../models/quote.js');
-
+//var quote = require('../models/quote.js');
+const mongoose = require('mongoose'); 
+const Quote = mongoose.model('Quote'); 
 module.exports = {
 
     index : function(request,response){
@@ -7,29 +8,20 @@ module.exports = {
     },
 
     getQuotes : function(request,response){
-        quote.findAll(request,response, function(err,quotes){
-            if(err){
-                console.log("Something went wrong.")
-                response.redirect('/');
-            }
-            if(quotes){
-                console.log(quotes);
-                response.render('quotes',{quotes :quotes});
-            }
-        });
+        Quote.find()
+            .then(function(quotes){
+                response.render('quotes',{quotes:quotes})
+            })
     },
 
     addQuote : function(request,response){
-        quote.addQuote(request,response, function(err){
-            if(err){
-                console.log('something went wrong', err);
-                //flash messages
-            }
-            else{
-                console.log('successfully added a user');
-                response.redirect('/quotes');
-            }
-        });
+       Quote.create(request.body)
+        .then(function(quote){
+            response.redirect('/quotes');
+        })
+        .catch(function(err){
+            response.render('index', err)
+        })
         
     }
 

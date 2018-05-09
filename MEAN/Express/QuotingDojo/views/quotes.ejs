@@ -13,9 +13,9 @@
         <h1>Our Collection of Quotes</h1>
         <div class="quotes">
             <!--ejs goes here -->
-            <% for (item in quotes) {%>
-               <h3>"<%= quotes[item].quote %>"</h3>
-               <p>-<%= quotes[item].name%> At: <%= quotes[item].createdAt%></p>
+            <% for (const quote of quotes) {%>
+               <h3>"<%= quote.quote %>"</h3>
+               <p>-<%= quote.name%> At: <%= quote.createdAt%></p>
                 <%}%>
         </div>
     </div>

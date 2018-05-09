@@ -1,9 +1,9 @@
 
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 const path = require('path');
 const fs = require('fs');
-const modelsPath = path.join(__dirname, '../models');
+const modelsPath = path.join(__dirname, 'models');
 
 mongoose.connect('mongodb://localhost/quotes');
 
