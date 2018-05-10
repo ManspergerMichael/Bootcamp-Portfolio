@@ -21,13 +21,13 @@
                 <th>Hardpoints</th>
                 <th>Actions</th>
             </tr>
-            <% for (value in mechs){ %>
+            <% for (const mech of mechs){ %>
                 <tr>
-                    <td><a href="/id/<%= mechs[value]._id%>"><%= mechs[value].name %></a></td>
-                    <td><%= mechs[value].class %></td>
-                    <td><%= mechs[value].faction %></td>
-                    <td><%= mechs[value].hardpoints %></td>
-                    <td><a href="/edit/<%= mechs[value]._id%>">Edit</a> <a href="/delete/<%= mechs[value]._id%>">Delete</a></td>
+                    <td><a href="/id/<%= mech._id%>"><%= mech.name %></a></td>
+                    <td><%= mech.class %></td>
+                    <td><%= mech.faction %></td>
+                    <td><%= mech.hardpoints %></td>
+                    <td><a href="/edit/<%= mech._id%>">Edit</a> <a href="/delete/<%= mech._id%>">Delete</a></td>
                 </tr>
             <%}%>
         </table>

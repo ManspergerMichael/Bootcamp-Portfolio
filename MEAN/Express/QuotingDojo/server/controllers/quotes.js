@@ -1,4 +1,4 @@
-//var quote = require('../models/quote.js');
+
 const mongoose = require('mongoose'); 
 const Quote = mongoose.model('Quote'); 
 module.exports = {

@@ -6,24 +6,6 @@ const QuoteSchema = new mongoose.Schema({
     quote: String
    }, {timestamps: true});
 
+//creates/sets collection in database
 mongoose.model('Quote', QuoteSchema); 
-const Quote = mongoose.model('Quote'); 
-
-
-module.exports = {
-    //usualy in controllers file
-    findAll : function(request){
-        Quote.find({}).sort('-date').exec(function(err,quotes){
-            return(err,quotes);
-            
-        })
-    },
-    
-    addQuote : function(request){
-        var quote = new Quote({name : request.body.name, quote : request.body.quote});
-        quote.save(function(err){
-            return(err);
-        })
-    }
-
-}
+//const Quote = mongoose.model('Quote'); 
