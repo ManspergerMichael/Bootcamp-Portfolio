@@ -1,0 +1,80 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const app = express();
+app.use(bodyParser.json());
+
+mongoose.connect('mongodb://localhost/RestfulAPI');
+var TaskSchema = new mongoose.Schema({ //creates the model to be sent to the DB
+    title: String,
+    description: {type: String, default:""},
+    completed: {type: Boolean, default: false},
+   }, {timestamps: true});
+   mongoose.model('Task_API', TaskSchema); // We are setting this Schema in our Models as 'User'
+   var Task = mongoose.model('Task_API')
+
+app.get('/getAll', function(request, response){
+    Task.find({}, function(err,task){
+        if(err){
+            console.log("returned error", err);
+            response.json({message: "Error", error: err})
+        }
+        else {
+            response.json({message: "Success", data:task})
+        }
+    })
+})
+app.get('/find/:id', function(request,response){
+    Task.find({_id:request.params.id},function(err,task){
+    if(err){
+        console.log("returned error", err);
+        response.json({message: "Error", error: err})
+    }
+    else {
+        response.json({message: "Success", data:task})
+    }
+    })
+})
+app.post('/update/:id', function(request,response){
+    Task.findByIdAndUpdate({_id: request.params.id},{$set:{title:request.body.title, description:request.body.description, completed:request.body.completed}}, function(err,task){
+        if(err){
+            console.log("returned error", err);
+            response.json({message: "Error", error: err})
+        }
+        else {
+            response.json({message: "Success", data:task})
+        }
+    })
+})
+
+app.get('/delete/:id', function(request,response){
+    Task.deleteOne({_id:request.params.id}, function(err,task){
+        if(err){
+            console.log("returned error", err);
+            response.json({message: "Error", error: err})
+        }
+        else {
+            response.json({message: "Success", data:task})
+        }
+    })
+})
+
+app.post('/create', function(request, response){
+    Task.create({title:request.body.title, description:request.body.description, completed:request.body.completed}, function(err,task){
+        if(err){
+            console.log("returned error", err);
+            response.json({message: "Error", error: err})
+        }
+        else {
+            response.json({message: "Success", data:task})
+        }
+    })
+})
+
+//5af4cf6b47c5dc39e5f9f8a3
+
+
+
+   app.listen(8000, function(errs){
+    console.log("Server at 8000");
+})

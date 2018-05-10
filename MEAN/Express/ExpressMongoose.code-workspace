@@ -23,6 +23,9 @@
         },
         {
             "path": "1955API"
+        },
+        {
+            "path": "RestfulTaskAPI"
         }
     ]
 }
