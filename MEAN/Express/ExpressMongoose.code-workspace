@@ -20,6 +20,9 @@
         },
         {
             "path": "LoginRegistration"
+        },
+        {
+            "path": "1955API"
         }
     ]
 }

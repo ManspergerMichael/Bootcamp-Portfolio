@@ -35,11 +35,12 @@ module.exports ={
         .then(saltedPassword =>{
             //create user
             //console.log(saltedPassword);
-            User.create({firstname:request.body.firstname,lastname:request.body.lastname, email:request.body.email,password:saltedPassword}, (err,user) =>{
+            user = User.create({firstname:request.body.firstname,lastname:request.body.lastname, email:request.body.email,password:saltedPassword}, (err,user) =>{
                 if(user){
                     User.findOne({email:user.email})
                         .then(function(user){
-                        request.saltedPassword.id = user._id;
+                        request.session.id = user._id;
+                        console.log(request.session.id);
                         response.redirect('/sucess');
                         })
                 }
