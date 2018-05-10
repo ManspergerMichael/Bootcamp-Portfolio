@@ -15,9 +15,6 @@ app.use(session({
     cookie: {maxAge: 60000}
 }))
 
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-
 app.use(express.static(__dirname+"/client/static"));
 app.set('views', __dirname+"/client/views");
 app.set('view engine', 'ejs');
