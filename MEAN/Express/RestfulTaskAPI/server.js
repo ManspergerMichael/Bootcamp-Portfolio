@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/RestfulTaskAngular/dist/RestfulTaskAngular'));
 
 mongoose.connect('mongodb://localhost/RestfulAPI');
 var TaskSchema = new mongoose.Schema({ //creates the model to be sent to the DB
@@ -14,6 +15,7 @@ var TaskSchema = new mongoose.Schema({ //creates the model to be sent to the DB
    var Task = mongoose.model('Task_API')
 
 app.get('/getAll', function(request, response){
+    response.render('index')
     Task.find({}, function(err,task){
         if(err){
             console.log("returned error", err);
