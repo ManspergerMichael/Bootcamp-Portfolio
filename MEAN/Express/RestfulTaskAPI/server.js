@@ -15,7 +15,6 @@ var TaskSchema = new mongoose.Schema({ //creates the model to be sent to the DB
    var Task = mongoose.model('Task_API')
 
 app.get('/getAll', function(request, response){
-    response.render('index')
     Task.find({}, function(err,task){
         if(err){
             console.log("returned error", err);
@@ -38,7 +37,7 @@ app.get('/find/:id', function(request,response){
     })
 })
 app.post('/update/:id', function(request,response){
-    Task.findByIdAndUpdate({_id: request.params.id},{$set:{title:request.body.title, description:request.body.description, completed:request.body.completed}}, function(err,task){
+    /*Task.findByIdAndUpdate({_id: request.params.id},{$set:{title:request.body.title, description:request.body.description, completed:request.body.completed}}, function(err,task){
         if(err){
             console.log("returned error", err);
             response.json({message: "Error", error: err})
@@ -46,7 +45,8 @@ app.post('/update/:id', function(request,response){
         else {
             response.json({message: "Success", data:task})
         }
-    })
+    })*/
+    console.log("Update function. I don't know how to pass parameters through a service.")
 })
 
 app.get('/delete/:id', function(request,response){
@@ -62,7 +62,7 @@ app.get('/delete/:id', function(request,response){
 })
 
 app.post('/create', function(request, response){
-    Task.create({title:request.body.title, description:request.body.description, completed:request.body.completed}, function(err,task){
+    /*Task.create({title:request.body.title, description:request.body.description, completed:request.body.completed}, function(err,task){
         if(err){
             console.log("returned error", err);
             response.json({message: "Error", error: err})
@@ -70,7 +70,8 @@ app.post('/create', function(request, response){
         else {
             response.json({message: "Success", data:task})
         }
-    })
+    })*/
+    response.json({message: "Create"});
 })
 
 //5af4cf6b47c5dc39e5f9f8a3
