@@ -6,21 +6,35 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   //title = 'app';
   tasks = [];
-  title = "Tasks"
-  getTasksFromService(){
+  taskDetail = [];
+  title = "Tasks";
+  constructor(private _httpService: HttpService){}
+
+  //ngOnInit(){
+  //  this.getTasksFromService();
+  //}
+
+  do(event){
+    console.log("DOING THINGS!!!");
+  }
+  //components envoke services
+  showTasks(event){
     let observeable = this._httpService.getTasks();
     observeable.subscribe(data => {
       console.log("Got our tasks!", data);
       this.tasks = data['data'];
     });
   }
-  constructor(private _httpService: HttpService){}
 
-  ngOnInit(){
-    this.getTasksFromService();
+  displayTask(event, id){
+    console.log(id);
+    let observeable = this._httpService.find(id);
+    observeable.subscribe(data =>{
+      this.taskDetail = data['data'];
+    })
   }
   
 }

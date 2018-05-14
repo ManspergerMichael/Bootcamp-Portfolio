@@ -7,11 +7,17 @@
 </div>
 
 <div>
+  <button (click)="showTasks($event)">Show Tasks</button>
   <h2 *ngFor="let task of tasks">
     <p>{{task.title}}</p>
-    <p>{{task.description}}</p>
-    <p>Completed? {{task.completed}}</p>
+    <button (click)="displayTask($event, task._id)">Show Details</button>
   </h2>
+</div>
+
+<div id="TaskInfo">
+  <h3 *ngIf="taskDetail">Details
+    <p>{{taskDetail.description}}</p>
+  </h3>
 </div>
 
 

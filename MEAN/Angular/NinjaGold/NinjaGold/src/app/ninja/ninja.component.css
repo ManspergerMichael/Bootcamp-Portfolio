@@ -1,0 +1,29 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.forms *{
+    display: block;
+    margin-left: 10px;
+}
+
+#farm{
+    display: inline-block;
+    align-self: auto;
+}
+
+#cave{
+    display: inline-block
+}
+#house{
+    display: inline-block
+}
+#casino{
+    display: inline-block
+}
+
+.messages{
+    margin-top: 20px;
+    border: 3px,solid,black;
+}

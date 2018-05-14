@@ -17,9 +17,11 @@ export class HttpService {
     //tempObservable.subscribe(data => console.log("Got our tasks!", data));//like a callback, .suscribe waits for the response then exicutes
   }
 
-  find(){
-    let tempObserveable = this._http.get('/find/5af4d17b57b9053a5d9396dd');
-    tempObserveable.subscribe(data => console.log("Got our JSON object!", data));
+  find(id){
+    console.log("in service");
+    return this._http.get('/find/'+id)
+    //let tempObserveable = this._http.get('/find/5af4d17b57b9053a5d9396dd');
+    //tempObserveable.subscribe(data => console.log("Got our JSON object!", data));
   }
   
   create(){

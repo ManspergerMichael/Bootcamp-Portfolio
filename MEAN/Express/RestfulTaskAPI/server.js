@@ -26,12 +26,14 @@ app.get('/getAll', function(request, response){
     })
 })
 app.get('/find/:id', function(request,response){
+    console.log("In server");
     Task.find({_id:request.params.id},function(err,task){
     if(err){
         console.log("returned error", err);
         response.json({message: "Error", error: err})
     }
     else {
+        console.log("sending");
         response.json({message: "Success", data:task})
     }
     })
