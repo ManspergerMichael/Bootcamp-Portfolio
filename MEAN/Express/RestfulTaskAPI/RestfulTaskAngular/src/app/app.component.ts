@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 
 @Component({
@@ -6,7 +6,21 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit{
+  //title = 'app';
+  tasks = [];
+  title = "Tasks"
+  getTasksFromService(){
+    let observeable = this._httpService.getTasks();
+    observeable.subscribe(data => {
+      console.log("Got our tasks!", data);
+      this.tasks = data['data'];
+    });
+  }
   constructor(private _httpService: HttpService){}
+
+  ngOnInit(){
+    this.getTasksFromService();
+  }
+  
 }
