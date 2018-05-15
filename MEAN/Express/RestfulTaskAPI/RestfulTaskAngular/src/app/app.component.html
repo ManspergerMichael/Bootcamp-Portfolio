@@ -15,9 +15,12 @@
 </div>
 
 <div id="TaskInfo">
-  <h3 *ngIf="taskDetail">Details
-    <p>{{taskDetail.description}}</p>
-  </h3>
+  <ul> 
+    <li *ngFor="let task of taskDetail">
+      {{task.description}}<br>
+      Completed?: {{task.completed}}
+    </li>
+  </ul>
 </div>
 
 
