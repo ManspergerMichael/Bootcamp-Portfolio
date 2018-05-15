@@ -64,7 +64,7 @@ app.get('/delete/:id', function(request,response){
 })
 
 app.post('/create', function(request, response){
-    /*Task.create({title:request.body.title, description:request.body.description, completed:request.body.completed}, function(err,task){
+    Task.create({title:request.body.title, description:request.body.description, completed:request.body.completed}, function(err,task){
         if(err){
             console.log("returned error", err);
             response.json({message: "Error", error: err})
@@ -72,11 +72,11 @@ app.post('/create', function(request, response){
         else {
             response.json({message: "Success", data:task})
         }
-    })*/
+    })
     response.json({message: "Create"});
 })
 
-//5af4cf6b47c5dc39e5f9f8a3
+
 
 
 

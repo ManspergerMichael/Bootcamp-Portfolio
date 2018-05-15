@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import {HttpService} from './http.service';//registers the new service
 import { HttpClientModule } from '@angular/common/http'; //reguire httpclientmodule, is this a included module?
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http'; //reguire httpclientmod
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [HttpService], //set (app)service as a provider
   bootstrap: [AppComponent]
