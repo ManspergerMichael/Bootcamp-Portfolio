@@ -1,0 +1,7 @@
+<div id="TaskInfo" *ngIf="taskToShow">
+  
+      {{taskToShow[0].title}}<br>
+      Completed?: {{taskToShow[0].completed}}<br>
+      <button (click)="delete($event, task._id)">Delete</button>
+      <button (click)="edit($event, task._id)">Edit</button>
+</div>

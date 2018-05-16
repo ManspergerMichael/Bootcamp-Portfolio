@@ -9,7 +9,7 @@ import { HttpService } from './http.service';
 export class AppComponent{
   //title = 'app';
   tasks = [];
-  taskDetail = [];
+  taskDetail
   editTask
   _id
   title

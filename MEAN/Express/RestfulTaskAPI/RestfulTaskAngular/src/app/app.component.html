@@ -14,16 +14,9 @@
   </h2>
 </div>
 
-<div id="TaskInfo" *ngIf="taskDetail">
-  <ul> 
-    <li *ngFor="let task of taskDetail">
-      {{task.description}}<br>
-      Completed?: {{task.completed}}<br>
-      <button (click)="delete($event, task._id)">Delete</button>
-      <button (click)="edit($event, task._id)">Edit</button>
-    </li>
-  </ul>
-</div>
+<app-task *ngIf="taskDetail" [taskToShow]="taskDetail"></app-task>
+
+
 
 <div id="newTask">
   <h3>New Task</h3>
