@@ -1,10 +1,11 @@
 
-<form (submit)="addScore()">
-  Name: <input type="text" name="user" [(ngModel)]="user">
-  Total Score: <input type="number" name="totalGold" [(ngModel)]="totalGold">
+<form (submit)="addScore()"> <!--triggers method in component class-->
+  Name: {{user}}
+  Total Score: {{totalGold}}
   <input type="submit" value="ADD YER SCORE!">
 </form>
 {{score}}
+<p> {{result}}</p>
   
 <div class="container">
   <div class="forms">
@@ -26,7 +27,7 @@
     <div id="casino">
       <h3>Casino</h3>
       <p>Earns/Lose 0-50 gold</p>
-      <button (click)="process('casino',-50,50)">Casino!</button>
+      <button (click)="process('casino',-50,100)">Casino!</button>
     </div>
   </div>
   <div class="messages">
@@ -36,11 +37,5 @@
     </li>
   </ul>
   </div>
-  <div class="scores">
-    <ul>
-      <li *ngFor="let s of scores">
-          {{s.user}} Score: {{s.score}}
-      </li>
-    </ul>
-  </div>
+  
 </div>

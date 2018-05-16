@@ -8,15 +8,22 @@ import { NinjaComponent } from './ninja/ninja.component';
 import { NinjaService } from './ninja.service'
 import { HttpClientModule } from '@angular/common/http'; 
 
+import { AppRoutingModule } from './app-routing.module';
+import { UserComponent } from './user/user.component';
+import { ScoresComponent } from './scores/scores.component'
+
 @NgModule({
   declarations: [
     AppComponent,
-    NinjaComponent
+    NinjaComponent,
+    UserComponent,
+    ScoresComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [NinjaService],
   bootstrap: [AppComponent]

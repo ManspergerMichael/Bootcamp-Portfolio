@@ -15,7 +15,7 @@ export class NinjaService {
     return this._http.get('/topTen');    
   }
 
-  addScore(data){
+  addScore(data){ //calls server
     console.log(data);
     console.log('you tired to add score');
     return this._http.post('/scores', data);

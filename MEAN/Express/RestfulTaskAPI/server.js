@@ -39,7 +39,7 @@ app.get('/find/:id', function(request,response){
     })
 })
 app.post('/update/:id', function(request,response){
-    /*Task.findByIdAndUpdate({_id: request.params.id},{$set:{title:request.body.title, description:request.body.description, completed:request.body.completed}}, function(err,task){
+    Task.findByIdAndUpdate({_id: request.params.id},{$set:{title:request.body.title, description:request.body.description, completed:request.body.completed}}, function(err,task){
         if(err){
             console.log("returned error", err);
             response.json({message: "Error", error: err})
@@ -47,11 +47,13 @@ app.post('/update/:id', function(request,response){
         else {
             response.json({message: "Success", data:task})
         }
-    })*/
-    console.log("Update function. I don't know how to pass parameters through a service.")
+    })
+    //console.log("Update function. I don't know how to pass parameters through a service.")
 })
 
 app.get('/delete/:id', function(request,response){
+    console.log("IN server delete");
+    console.log(request.params.id);
     Task.deleteOne({_id:request.params.id}, function(err,task){
         if(err){
             console.log("returned error", err);
@@ -64,16 +66,18 @@ app.get('/delete/:id', function(request,response){
 })
 
 app.post('/create', function(request, response){
-    Task.create({title:request.body.title, description:request.body.description, completed:request.body.completed}, function(err,task){
+    console.log(request.body);
+    var newTask = new Task({title:request.body.title, description:request.body.description})
+        newTask.save(function(err,task){
         if(err){
             console.log("returned error", err);
             response.json({message: "Error", error: err})
         }
         else {
-            response.json({message: "Success", data:task})
+            response.json({message: "Success", data:newTask})
         }
     })
-    response.json({message: "Create"});
+    //response.json({message: "Create"});
 })
 
 

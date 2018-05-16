@@ -3,4 +3,7 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-<app-ninja></app-ninja>
+  <button [routerLink]="['/ninja']">Load Ninja</button>
+  <button [routerLink]="['/score']">Load Score</button>
+  <router-outlet></router-outlet> 
+  

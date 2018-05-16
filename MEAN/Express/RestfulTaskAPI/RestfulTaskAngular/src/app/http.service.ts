@@ -24,13 +24,20 @@ export class HttpService {
     //tempObserveable.subscribe(data => console.log("Got our JSON object!", data));
   }
   
-  create(){
-    let tempObserveable = this._http.get('/create');
-    tempObserveable.subscribe(data => console.log("Created an object!", data));
+  create(data){
+    console.log("in create");
+    return this._http.post('/create', data);
+    //let tempObserveable = this._http.get('/create');
+    //tempObserveable.subscribe(data => console.log("Created an object!", data));
   }
 
-  delete(){
-    let tempObserveable = this._http.get('/delete/5af4d17b57b9053a5d9396dd');
-    tempObserveable.subscribe(data => console.log("Deleted an object!", data));
+  delete(id){
+    console.log(id)
+    return this._http.get('/delete/'+id);
+    //tempObserveable.subscribe(data => console.log("Deleted an object!", data));
+  }
+
+  edit(data){
+    return this._http.post('/update/'+data._id, data);
   }
 }

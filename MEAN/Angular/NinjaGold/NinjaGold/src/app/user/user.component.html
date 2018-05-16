@@ -1,0 +1,5 @@
+
+<form (submit)="ninjaPage()"> <!--triggers method in component class-->
+  Name: <input type="text" name="user" minlength="3" [(ngModel)]="user" #newUser='ngModel'>
+  <input type="submit" [disabled]="!newUser.valid||newUser.pristine" value="ADD YER SCORE!">
+</form>

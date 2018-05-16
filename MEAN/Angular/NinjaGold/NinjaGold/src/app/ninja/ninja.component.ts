@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NinjaService } from '../ninja.service';
+import { ActivatedRoute, Params} from '@angular/router'
 
 @Component({
   selector: 'app-ninja',
@@ -11,7 +12,8 @@ export class NinjaComponent implements OnInit {
   messages;
   scores;
   user;
-  constructor(private _ninjaService:NinjaService) { 
+  result;
+  constructor(private _ninjaService:NinjaService, private _route:ActivatedRoute) { 
     this.totalGold = 0;
     this.messages = [];
     this.scores = [];
@@ -20,14 +22,21 @@ export class NinjaComponent implements OnInit {
   }
 
   ngOnInit() {
-    var bob = this._ninjaService.getScores();
-    bob.subscribe(data =>{
-      this.scores = data;
-    })
+    this.user = this._route.snapshot.paramMap.get('id');
+
+    
   }
   
-  addScore(){
-    this._ninjaService.addScore({user: this.user ,score: this.totalGold}).subscribe(data=>console.log(data));
+  addScore(){//calls method in ninja.service
+    this.result = "";
+    this._ninjaService
+      .addScore({user: this.user ,score: this.totalGold})
+        .subscribe(data=>{
+          console.log(data);
+          if(data['status'] == "Not goodly"){
+          this.result = data['errors'];
+        }
+      });
   }
 
   process(type, min, max){
