@@ -1,0 +1,9 @@
+<h1>Buy ShintoCoins</h1>
+<h3>Current ShintoCoin Value {{value}}</h3>
+<h3>Number of ShintoCoins owned {{coinsOwned}}</h3>
+<p *ngIf="error">{{error}}</p>
+
+<form (submit)="sell()">
+  <h5>Sell Coins</h5><br>
+  <input type="submit" value="Sell">
+</form>

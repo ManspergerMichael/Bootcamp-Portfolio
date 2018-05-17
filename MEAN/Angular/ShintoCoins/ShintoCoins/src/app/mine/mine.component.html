@@ -1,0 +1,11 @@
+<h1>Mine ShintoCoins</h1>
+<br>
+<h3>Coins Owned: {{coinsOwned}}</h3>
+<h3>Here you can mine ShintoCoins by answering the question:</h3>
+
+
+<form (submit)="mine()">
+  <h5>What is the air speed of a swallow?</h5><br>
+  <input type="text" name="answer" [(ngModel)]="answer"><br>
+  <input type="submit" value="Answer">
+</form>

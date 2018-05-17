@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NinjaService } from '../ninja.service';
-import { ActivatedRoute, Params} from '@angular/router'
+import { ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-ninja',

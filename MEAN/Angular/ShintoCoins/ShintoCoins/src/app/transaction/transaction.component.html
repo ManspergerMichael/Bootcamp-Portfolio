@@ -1,0 +1,10 @@
+<h1>Transaction details</h1>
+
+<div *ngIf="ledger">
+  <ul *ngFor="let item of ledger">
+    <li *ngIf=" item.id == id">
+      <p>Transaction #{{item.id}}</p>
+      <p>{{item.Action}} {{item.Ammount}} ShintoCoin</p>
+    </li>
+  </ul>
+</div>
