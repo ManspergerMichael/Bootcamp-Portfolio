@@ -1,0 +1,8 @@
+<a [routerLink]="['/home']">Home</a>
+
+<p>Edit this author</p>
+<form (submit)=edit($event)>
+  Name:<br>
+  <input type="text" name="name" [(ngModel)] = 'author.name'>
+  <input type="submit" value="Edit Author" />
+</form>

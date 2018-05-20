@@ -1,0 +1,16 @@
+<button [routerLink]="['/new']">Add a New Author</button>
+
+<table *ngIf="authors">
+    <thead>
+        <th>Author</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let auth of authors">
+            <td>{{auth.name}}</td>
+            <td><button [routerLink]="['/edit/'+auth._id]">EDIT</button></td>
+            <button>DELETE</button>
+
+        </tr>
+    </tbody>
+</table>
