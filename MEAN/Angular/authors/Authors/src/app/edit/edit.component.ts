@@ -10,6 +10,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class EditComponent implements OnInit {
   author:any
+  message:String
   id
   constructor(private _authorsService:AuthorsService,private _route: ActivatedRoute) { 
   }
@@ -31,9 +32,9 @@ export class EditComponent implements OnInit {
   }
 
   edit(event){
-    //console.log(this.id, this.author.id);
+    console.log(this.id, this.author.id);
     var observeable = this._authorsService.edit(this.id,this.author.name);
-    observeable.subscribe(data => console.log(data['message']))
+    observeable.subscribe(data => {this.message =data['message']})
   }
 
 }
