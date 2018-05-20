@@ -29,6 +29,7 @@ app.get('/getAll', function(req,res){
 })
 
 app.post('/create', function(req,res){
+    console.log(req.body);
     Author.create({name: req.body.name},function(err,auth){
         if(err){
             console.log("returned error", err);
@@ -53,7 +54,20 @@ app.get('/find/:id', function(req,res){
 })
 
 app.post('/edit/:id', function(req,res){
-    Author.findByIdAndUpdate({_id:req.params.id}, {$set:{name:req.body.name}}, function(err,auth){
+    console.log(req.params.id, req.body)
+    Author.findByIdAndUpdate({_id:req.params.id}, {name:req.body.name}, function(err,auth){
+        if(err){
+            console.log("returned error", err);
+            res.json({message: "Error", error: err})
+        }
+        else {
+            res.json({message: "Success",data: auth})
+        }
+    })
+})
+app.get('/delete:id', function(req,res){
+    console.log("server delete")
+    Author.findByIdAndRemove({_id:req.params.id}, function(err,auth){
         if(err){
             console.log("returned error", err);
             res.json({message: "Error", error: err})

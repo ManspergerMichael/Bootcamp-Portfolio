@@ -16,7 +16,18 @@ export class AuthorsService {
   }
 
   edit(id,data){
+    console.log(data, id);
     return this._http.post('/edit/'+id, data);
+  }
+
+  create(data){
+    console.log(data);
+    return this._http.post('/create', data)
+  }
+
+  delete(id){
+    console.log("service delete")
+    return this._http.get('/delete/'+id);
   }
   
 }

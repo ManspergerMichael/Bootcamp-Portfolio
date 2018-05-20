@@ -1,1 +1,14 @@
-<button [routerLink]="['/home']">home</button>
+<a [routerLink]="['/home']">home</a>
+
+<h3>Create a new author</h3>
+
+<form (submit)='create($event)'>
+    Name:<br>
+    <input type="text" name="name" [(ngModel)]="author.name"><br>
+    <input type="submit" value="Add">
+    <button [routerLink]="['/home']">Cancel</button>
+</form>
+
+<ul *ngIf="messages">
+    <li>{{messages}}</li>
+</ul>

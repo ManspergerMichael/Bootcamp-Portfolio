@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorsService } from '../authors.service';//import in every componet
 
 @Component({
   selector: 'app-new',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new.component.css']
 })
 export class NewComponent implements OnInit {
-
-  constructor() { }
+  author:any
+  messages:any
+  constructor(private _auth:AuthorsService) { }
 
   ngOnInit() {
+    this.author = {name:''}
+  }
+
+  create(event){
+    let observeable = this._auth.create(this.author);
+    observeable.subscribe(data => this.messages = data['message']);
   }
 
 }
