@@ -9,6 +9,8 @@
     <button [routerLink]="['/home']">Cancel</button>
 </form>
 
-<ul *ngIf="messages">
-    <li>{{messages}}</li>
-</ul>
+<div *ngIf="errorFlag">
+    <ul>
+    <li >{{messages}}</li>
+    </ul>   
+</div>

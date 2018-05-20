@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.author = {name:""};
+    this.author = {name:""};//prepares author as a JSON object
     this._route.params.subscribe((params: Params) => {
       this.id = params['id'];
       console.log(this.id);

@@ -8,7 +8,8 @@ import { AuthorsService } from '../authors.service';//import in every componet
 })
 export class NewComponent implements OnInit {
   author:any
-  messages:any
+  messages:any;
+  errorFlag: boolean = false;
   constructor(private _auth:AuthorsService) { }
 
   ngOnInit() {
@@ -16,8 +17,19 @@ export class NewComponent implements OnInit {
   }
 
   create(event){
-    let observeable = this._auth.create(this.author);
-    observeable.subscribe(data => this.messages = data['message']);
+    this.messages = [];
+    if(this.author.name < 3){
+      this.errorFlag = true;
+      this.messages.push({'message':"Name should be longer than 3 characters"});
+      console.log(this.messages);
+    }
+    else{
+      this.errorFlag = false;
+      let observeable = this._auth.create(this.author);
+      observeable.subscribe(data => {this.messages.push(data['message']);
+      console.log(this.messages);
+    });
+    }
   }
 
 }

@@ -9,7 +9,7 @@
         <tr *ngFor="let auth of authors">
             <td>{{auth.name}}</td>
             <td><button [routerLink]="['/edit/'+auth._id]">EDIT</button></td>
-            <button class="nav" (click)='delete(auth._id)'>DELETE</button>
+            <button (click)='delete(auth._id)'>DELETE</button>
 
         </tr>
     </tbody>
