@@ -11,6 +11,8 @@
 
 <div *ngIf="errorFlag">
     <ul>
-    <li >{{messages}}</li>
+        <li *ngFor="let message of messages">
+            {{message.message}}
+        </li>
     </ul>   
 </div>
