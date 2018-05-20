@@ -15,8 +15,8 @@ export class AuthorsService {
     return this._http.get('/find/'+id);
   }
 
-  edit(data){
-    return this._http.post('/update', data);
+  edit(id,data){
+    return this._http.post('/edit/'+id, data);
   }
   
 }

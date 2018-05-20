@@ -31,7 +31,8 @@ export class EditComponent implements OnInit {
   }
 
   edit(event){
-    var observeable = this._authorsService.edit({_id:this.id, name:this.author.name});
+    //console.log(this.id, this.author.id);
+    var observeable = this._authorsService.edit(this.id,this.author.name);
     observeable.subscribe(data => console.log(data['message']))
   }
 

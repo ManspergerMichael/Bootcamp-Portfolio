@@ -52,8 +52,8 @@ app.get('/find/:id', function(req,res){
     })
 })
 
-app.post('/edit', function(req,res){
-    Author.findByIdAndUpdate({_id:req.body.id}, {$set:{name:req.body.name}}, function(err,auth){
+app.post('/edit/:id', function(req,res){
+    Author.findByIdAndUpdate({_id:req.params.id}, {$set:{name:req.body.name}}, function(err,auth){
         if(err){
             console.log("returned error", err);
             res.json({message: "Error", error: err})
