@@ -8,18 +8,18 @@ namespace Phone{
         }
         public string Ring() 
         {
-            return _ringTone;
+            return getRingTone();
         }
         public string Unlock() 
         {
-            return "Nokia " + _versionNumber + "unlocked with fingerprint";
+            return "Nokia " + getVersionNum() + "unlocked with fingerprint";
         }
         public override void DisplayInfo() 
         {
-            System.Console.WriteLine("$$$$$$$$$\nNokia: "+_versionNumber+
-            "\nBattery Percentage: "+_batteryPercentage+
-            "\nCarrier: "+_carrier+
-            "\nRing Tone: "+_ringTone+
+            System.Console.WriteLine("$$$$$$$$$\nNokia: "+getVersionNum()+
+            "\nBattery Percentage: "+getBattery()+
+            "\nCarrier: "+getCarrier()+
+            "\nRing Tone: "+getRingTone()+
             "\n$$$$$$$$");         
         }
     }

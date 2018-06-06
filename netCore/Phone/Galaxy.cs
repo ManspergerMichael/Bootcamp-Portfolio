@@ -4,19 +4,19 @@
         : base(versionNumber, batteryPercentage, carrier, ringTone) {}
         public string Ring() 
         {
-            return _ringTone;
+            return getRingTone();
         }
 
         public string Unlock() 
         {
-            return "Galaxy "+_versionNumber+" unlocked with fingerprint.";
+            return "Galaxy "+getVersionNum()+" unlocked with fingerprint.";
         }
         public override void DisplayInfo() 
         {
-            System.Console.WriteLine("#########\nGalaxy "+_versionNumber+
-            "\nBattery Percentage: "+_batteryPercentage+
-            "\nCarrier: "+_carrier+
-            "\nRing Tone: "+_ringTone+
+            System.Console.WriteLine("#########\nGalaxy "+getVersionNum()+
+            "\nBattery Percentage: "+getBattery()+
+            "\nCarrier: "+getCarrier()+
+            "\nRing Tone: "+getRingTone()+
             "\n#########");          
         }
     }

@@ -7,7 +7,6 @@ namespace Human
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-
             Wizard wiz = new Wizard("Tim");
             System.Console.WriteLine(wiz.name);
             Samurai mus = new Samurai("Jin");
