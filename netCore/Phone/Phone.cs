@@ -1,12 +1,9 @@
 namespace Phone{
     public abstract class Phone {
-        private string _versionNumber{
-            get{return _versionNumber;}
-            set{_versionNumber = value;}
-            }
-        private int _batteryPercentage{get;set;}
-        private string _carrier{get;set;}
-        private string _ringTone{get;set;}
+        protected string _versionNumber{get;set;}
+        protected int _batteryPercentage{get;set;}
+        protected string _carrier{get;set;}
+        protected string _ringTone{get;set;}
         public Phone(string versionNumber, int batteryPercentage, string carrier, string ringTone){
             _versionNumber = versionNumber;
             _batteryPercentage = batteryPercentage;

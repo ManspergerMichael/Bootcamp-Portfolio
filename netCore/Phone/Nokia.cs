@@ -1,19 +1,26 @@
 namespace Phone{
     public class Nokia : Phone, IRingable 
     {
+        //public string versionNumber;
     public Nokia(string versionNumber, int batteryPercentage, string carrier, string ringTone) 
-        : base(versionNumber, batteryPercentage, carrier, ringTone) {}
+        : base(versionNumber, batteryPercentage, carrier, ringTone) {
+            //public string versionNumber;
+        }
         public string Ring() 
         {
-            return "... Ringgg ring ringgg ...";
+            return _ringTone;
         }
         public string Unlock() 
         {
-            return "Nokia " + versionNumber + "unlocked with fingerprint";
+            return "Nokia " + _versionNumber + "unlocked with fingerprint";
         }
         public override void DisplayInfo() 
         {
-            return "##############\nNokia"+versionNumber+            
+            System.Console.WriteLine("$$$$$$$$$\nNokia: "+_versionNumber+
+            "\nBattery Percentage: "+_batteryPercentage+
+            "\nCarrier: "+_carrier+
+            "\nRing Tone: "+_ringTone+
+            "\n$$$$$$$$");         
         }
     }
 
