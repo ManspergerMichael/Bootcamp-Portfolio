@@ -25,8 +25,8 @@ namespace Portfolio
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseMvc();
+            app.UseStaticFiles();
+            app.UseMvc(); //this line always goes last in the configure method
         }
 
         public Startup(IHostingEnvironment env){

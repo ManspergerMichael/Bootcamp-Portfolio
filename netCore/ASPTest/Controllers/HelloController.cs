@@ -6,9 +6,10 @@
             //for each route this controller is to handle:
             [HttpGet]       //type of request
             [Route("")]     //associated route string (exclude the leading /)
-            public string Index()
+            public IActionResult Index()
             {
-                return "Hello World from HelloController!";
+                ViewBag.Example = "Hello World!";
+                return View("Hello");
             }
 
             /*Example of routers
