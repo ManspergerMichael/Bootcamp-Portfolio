@@ -1,6 +1,6 @@
 namespace ViewModel.Models{
     public class Message{
-        private string message;
+        public string message = "Shapopi!";
         public string getMessage(){
             return message;
         }
