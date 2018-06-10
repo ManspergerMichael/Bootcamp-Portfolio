@@ -28,13 +28,13 @@ namespace ViewModel.Controllers
 
         [HttpGet]
         [Route("/List")]
-        public void List(){
-            /* List users = new List();
-            User bob = new User("Bob", "Boberton");
-            User bill = new User("Bill","Billington");
-            users.Add(bob);
-            users.Add(bill);
-            return View("List",users); */
+        public IActionResult List(){
+            userList list = new userList();
+            string bob = "Bob Boberton";
+            string bill = "BillBillington";
+            list.add(bob);
+            list.add(bill);
+            return("List",list);
         }
 
         [HttpGet]
