@@ -32,11 +32,10 @@ namespace ViewModel.Controllers
             User bob = new User("Bob", "Boberton");
             User bill = new User("Bill","Billington");
             List<User> users = new List<User>();
-            
             users.Add(bob);
             users.Add(bill);
-            //ViewBag["usersList"] = users;
-            return View("List",users);
+            ViewBag.userList = users;
+            return View("List");
         }
 
         [HttpGet]

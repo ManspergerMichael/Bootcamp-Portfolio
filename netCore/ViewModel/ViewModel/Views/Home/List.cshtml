@@ -1,5 +1,5 @@
-@model ViewModel.Models.User
+@model IEnumerable<ViewModel.Models.User>
 
-@foreach(User user in users){
-    <h1>@Model.firstName @Model.lastName</h1>
+@foreach(User user in ViewBag.userList){
+    <h1>@user.firstName @user.lastName</h1>
 } 
