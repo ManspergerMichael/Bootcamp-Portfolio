@@ -29,12 +29,14 @@ namespace ViewModel.Controllers
         [HttpGet]
         [Route("/List")]
         public IActionResult List(){
-            userList list = new userList();
-            string bob = "Bob Boberton";
-            string bill = "BillBillington";
-            list.add(bob);
-            list.add(bill);
-            return("List",list);
+            User bob = new User("Bob", "Boberton");
+            User bill = new User("Bill","Billington");
+            List<User> users = new List<User>();
+            
+            users.Add(bob);
+            users.Add(bill);
+            //ViewBag["usersList"] = users;
+            return View("List",users);
         }
 
         [HttpGet]
