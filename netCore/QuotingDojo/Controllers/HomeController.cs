@@ -5,28 +5,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuotingDojo.Models;
+using DbConnection;
 
 namespace QuotingDojo.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
+        private DbConnector cnx;
+
+        public HomeController(){
+            cnx = new DbConnector();
         }
 
-        public IActionResult About()
+        [HttpGet]
+        [Route("")]
+        public IActionResult Home()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return View("Home");
         }
 
-        public IActionResult Contact()
+        [HttpGet]
+        [Route("quotes")]
+        public IActionResult Quotes()
         {
-            ViewData["Message"] = "Your contact page.";
+            
+            string query = "SELECT * FROM User";
+            var allUsers = DbConnector.Query(query);
+            ViewBag.allUsers = allUsers;
+            return View("Quotes");
+        }
 
-            return View();
+        [HttpPost]
+        [Route("Create")]
+        public IActionResult Create(string name, string quote){
+            string query = $"INSERT INTO User(Name, Quote) VALUES('{name}','{quote}')";
+            DbConnector.Execute(query);
+            return RedirectToAction("quotes");
         }
 
         public IActionResult Error()
