@@ -24,18 +24,20 @@ namespace RESTauranter.Controllers
             
             return View("Home");
         }
-        [HttpPost]
-        [Route("Create")]
-        public IActionResult Create(string name, string resturant, string review, int stars, DateTime date){
-            reviews thing = new reviews();
-            thing.name = name;
-            thing.resturant = resturant;
-            thing.review = review;
-            thing.stars = stars;
-            thing.date = date;
-            _context.Add(thing);
-            _context.SaveChanges();
-            return RedirectToAction("Reviews");
+        
+        [HttpPost("Create")]
+        public IActionResult Create(reviews review){
+            System.Console.WriteLine("Hello review");
+            if(ModelState.IsValid){
+                _context.Add(review);
+                _context.SaveChanges();
+                return RedirectToAction("Reviews");
+            }
+            else{
+                System.Console.WriteLine("Should return errors");
+                return View("Home",review);
+            }
+            
         }
 
         [HttpGet]

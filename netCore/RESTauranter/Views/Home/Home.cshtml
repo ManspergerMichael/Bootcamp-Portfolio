@@ -3,14 +3,15 @@
 
 <form asp-action="Create" asp-controller="Home" method="POST">
     <span asp-validation-for="name"></span>
-    <label asp-for="name">User Name:</label>
+    
+    <label asp-for="name"></label>
     <input asp-for="name"><br>
     <span asp-validation-for="resturant"></span>
     <label asp-for="resturant">Resturant:</label>
     <input asp-for="resturant"><br>
     <span asp-validation-for="review"></span>
     <label asp-for="review">Review:</label>
-    <textarea asp-for="review" rows="5" cols="10"></textarea><br>
+    <textarea asp-for="review" rows="3" cols="10"></textarea><br>
     <label asp-for="stars"></label>
     <select asp-for="stars">
         <option value="1">1</option>
