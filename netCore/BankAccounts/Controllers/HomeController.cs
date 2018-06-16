@@ -73,6 +73,8 @@ namespace BankAccounts.Controllers
                 var Hasher = new PasswordHasher<User>();
                 if(0 != Hasher.VerifyHashedPassword(user, user.Password, Password)){
                     HttpContext.Session.SetInt32("UserID",user.id);
+                    int? session = HttpContext.Session.GetInt32("UserID");
+                    System.Console.WriteLine(session);
                     return RedirectToAction("Success");
                 }
                 else{
@@ -88,8 +90,11 @@ namespace BankAccounts.Controllers
         }
         [HttpGet("account")]
         public IActionResult Success(){
-            int? Uid = HttpContext.Session.GetInt32("UserId");
-            Account account = _context.Account.Include(u => u.User).SingleOrDefault(u => u.User_id == Uid);
+            int? Uid = HttpContext.Session.GetInt32("UserID");
+            System.Console.WriteLine(Uid);
+            
+                
+
             
             ViewBag.account = account;
             return View("Dashboard", account);
