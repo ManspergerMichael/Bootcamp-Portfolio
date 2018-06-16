@@ -92,7 +92,9 @@ namespace BankAccounts.Controllers
         public IActionResult Success(){
             int? Uid = HttpContext.Session.GetInt32("UserID");
             System.Console.WriteLine(Uid);
-            
+            Account account = _context.Account.
+                Include(Account => Account.User_id == Uid).
+                    ThenInclude(Account => Account.Transactions
                 
 
             
