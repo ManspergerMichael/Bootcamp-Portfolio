@@ -3,7 +3,7 @@ using System;
 namespace BankAccounts.Models{
     public class User{
         [Key]
-        public int id{get;set;}
+        public int UserID{get;set;}
         [Required]
         [MinLength(3)]
         public string FirstName{get;set;}
@@ -16,6 +16,9 @@ namespace BankAccounts.Models{
         [Required]
         [MinLength(8)]
         public string Password{get;set;}
+        
+        public Account account {get;set;}
+
     }
 
     

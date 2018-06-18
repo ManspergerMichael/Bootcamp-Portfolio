@@ -40,13 +40,13 @@ namespace BankAccounts.Controllers
                         User newUser = _context.User.SingleOrDefault(login => login.Email == user.Email);
                         Account newAccount = new Account();
                         newAccount.Balance = 100.00;
-                        newAccount.User_id = newUser.id;
-                        newAccount.User = newUser;
+                        newAccount.UserID = newUser.UserID;
+                        //newAccount.User = newUser;
                         _context.Account.Add(newAccount);
                         _context.SaveChanges();
                         
                         //set user id to session
-                        HttpContext.Session.SetInt32("UserID", newUser.id);
+                        HttpContext.Session.SetInt32("UserID", newUser.UserID);
                         return RedirectToAction("Success");
                     }
                     //if modelstate is invalid return to login with error messages
@@ -68,13 +68,13 @@ namespace BankAccounts.Controllers
 
         [HttpPost("Login")]
         public IActionResult Login(string email, string Password){
-            var user = _context.User.SingleOrDefault(u => u.Email == email);
+            User user = _context.User.SingleOrDefault(u => u.Email == email);
             if(user != null && Password != null){
                 var Hasher = new PasswordHasher<User>();
                 if(0 != Hasher.VerifyHashedPassword(user, user.Password, Password)){
-                    HttpContext.Session.SetInt32("UserID",user.id);
-                    int? session = HttpContext.Session.GetInt32("UserID");
-                    System.Console.WriteLine(session);
+                    HttpContext.Session.SetInt32("UserID",user.UserID);
+                    //int? session = HttpContext.Session.GetInt32("UserID");
+                    //System.Console.WriteLine(session);
                     return RedirectToAction("Success");
                 }
                 else{
@@ -90,16 +90,42 @@ namespace BankAccounts.Controllers
         }
         [HttpGet("account")]
         public IActionResult Success(){
-            int? Uid = HttpContext.Session.GetInt32("UserID");
-            System.Console.WriteLine(Uid);
-            Account account = _context.Account.
-                Include(Account => Account.User_id == Uid).
-                    ThenInclude(Account => Account.Transactions
-                
+            int Uid = (int)HttpContext.Session.GetInt32("UserID");
+            //System.Console.WriteLine(Uid);
+            //Account account = _context.Account.
+            //    Include(u => u.User).SingleOrDefault(u => u.User_ID == Uid);
 
+            List<Account> details = _context.Account.Include(x => x.User).
+            Include(x => x.Transactions).Where(x => x.UserID == Uid).ToList();
+            HttpContext.Session.SetInt32("AccountID", details[0].AccountID);
+            // User unpack = user[0];
             
-            ViewBag.account = account;
-            return View("Dashboard", account);
+            //ViewBag.account = account;
+            return View("Dashboard",details);
+        }
+
+        public IActionResult Process(double change){
+            int? Uid = HttpContext.Session.GetInt32("UserID");
+            int? Aid = HttpContext.Session.GetInt32("AccountID");
+
+            //insert into transaction table
+            Transaction trans = new Transaction();
+            trans.AccountID = (int)Aid;
+            trans.BalanceChange = change;
+            trans.Date = System.DateTime.Now;
+            _context.Add(trans);
+            _context.SaveChanges();
+
+            //update account balance
+            Account account = _context.Account.SingleOrDefault(a => a.AccountID == Aid);
+            account.Balance = account.Balance + change;
+            _context.SaveChanges();
+
+            return RedirectToAction("Success");
+
+            //System.Console.WriteLine(Uid);
+            //System.Console.WriteLine(Aid);
+            //System.Console.WriteLine(change);
         }
 
         public IActionResult Error()
