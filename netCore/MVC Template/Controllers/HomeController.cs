@@ -4,26 +4,26 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using LoginRegistration.Models;
+using TheWall.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace LoginRegistration.Controllers
+namespace TheWall.Controllers
 {
     public class HomeController : Controller
     {
-        private UserContext _context;
-        public HomeController(UserContext context){
+        private WallContext _context;
+
+        public HomeController(WallContext context){
             _context = context;
         }
         [HttpGet("")]
         public IActionResult Home(){
-            List<User> AllUsers = _context.User.ToList();
-            ViewBag.Users = AllUsers;
             return View("Login");
         }
+
         [HttpPost("Register")]
         public IActionResult Register(User user, string ConfirmPassword){
-            User userEmail = _context.User.SingleOrDefault(login => login.email == user.email);
+            User userEmail = _context.Users.SingleOrDefault(login => login.Email == user.Email);
             if(user.Password == ConfirmPassword){
                 if(userEmail == null){
                     if(ModelState.IsValid){
@@ -53,7 +53,7 @@ namespace LoginRegistration.Controllers
 
         [HttpPost("Login")]
         public IActionResult Login(string email, string Password){
-            User user = _context.User.SingleOrDefault(u => u.email == email);
+            var user = _context.Users.SingleOrDefault(u => u.Email == email);
             if(user != null && Password != null){
                 var Hasher = new PasswordHasher<User>();
                 if(0 != Hasher.VerifyHashedPassword(user, user.Password, Password)){
@@ -70,13 +70,6 @@ namespace LoginRegistration.Controllers
             }
             
         }
-        [HttpGet("Success")]
-        public IActionResult Success(){
-            List<User> AllUsers = _context.User.ToList();
-            ViewBag.Users = AllUsers;
-            return View("Success");
-        }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
