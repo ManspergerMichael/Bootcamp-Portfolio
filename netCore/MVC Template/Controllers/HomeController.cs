@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheWall.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace TheWall.Controllers
 {
@@ -33,6 +34,7 @@ namespace TheWall.Controllers
                         user.Password = Hasher.HashPassword(user, user.Password);
                         _context.Add(user);
                         _context.SaveChanges();
+                        HttpContext.Session.SetInt32("UserID", user.UserID);
                         return RedirectToAction("Success");
                     }
                     else{
@@ -57,6 +59,7 @@ namespace TheWall.Controllers
             if(user != null && Password != null){
                 var Hasher = new PasswordHasher<User>();
                 if(0 != Hasher.VerifyHashedPassword(user, user.Password, Password)){
+                    HttpContext.Session.SetInt32("UserID", user.UserID);
                     return RedirectToAction("Success");
                 }
                 else{
